@@ -1,0 +1,42 @@
+.App {
+  text-align: center;
+}
+
+.about-page,
+.favorite-page,
+.all-recipes-page,
+.login-page,
+.regiter-page,
+.user-info-page,
+.food-mng-page-container,
+.comment-page {
+  min-height: 100vh;
+}
+
+.user-info-page{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+.regiter-page{
+  display: flex;
+  justify-content: center;
+}
+.food-mng-page{
+  display: flex;
+}
+.favorite-page{
+  padding: 0 150px;
+}
+.login-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-page-google{
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}

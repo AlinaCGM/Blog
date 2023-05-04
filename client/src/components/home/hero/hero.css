@@ -1,0 +1,35 @@
+.hero-container{
+  position: relative;
+  height: 700px;
+  background-image: url('../../../assets/back.jpg');
+  background-position: right;
+  background-size:contain;
+  background-repeat: no-repeat;
+}
+.hero-container h1{
+  text-align: left;
+  position: absolute;
+  left: 150px;
+  color: #D28232;
+  font-size: 50px;
+  font-weight: normal;
+}
+.hero-container span{
+  font-size: 120px;
+  color: #BF3300;
+  font-family: 'Dancing Script';
+}
+.hero-container p{
+  position: absolute;
+  top: 220px;
+  left: 150px;
+  width: 20%;
+  text-align: left;
+  line-height: 25px;
+}
+.hero-container a{
+  color:#D28232;
+}
+.hero-container em{
+  color: #BF3300;
+}

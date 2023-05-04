@@ -1,0 +1,36 @@
+.food-item-container{
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.food-item-container h3{
+  font-size: calc(100% + .3vw);
+  border: 1px solid gray;
+  padding: 10px 10px;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content:center ;
+  align-items: center;
+}
+.food-item-container p{
+  text-align: left;
+  line-height: 25px;
+}
+.food-item-container a{
+  text-decoration: none;
+}
+.food-item-image-fram{
+  width: 100%;
+}
+.food-item-image-fram img{
+  width:100%;
+}
+.food-item-rate-fav{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}

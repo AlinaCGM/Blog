@@ -1,0 +1,28 @@
+.form-container{
+  margin-top: 20px;
+}
+.form-field {
+  position: relative;
+  text-align: center;
+  margin: 5px auto;
+  padding: 12px;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+}
+
+.textBox {
+  width: 420px;
+}
+
+.error-message {
+  color: red;
+}
+.visibility{
+  position: absolute;
+  top:22px;
+  right: 30px;
+  z-index: 100;
+}

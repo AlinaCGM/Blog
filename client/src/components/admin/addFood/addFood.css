@@ -1,0 +1,16 @@
+.add-food-container{
+  width:35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.add-food-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.add-form-text{
+  width: 400px
+}
