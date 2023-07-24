@@ -8,4 +8,5 @@ const generateToken = (id: string, email: string) => {
     expiresIn: "1h",
   });
 };
+
 export default generateToken;

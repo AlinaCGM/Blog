@@ -21,6 +21,10 @@ export const getUserListController = async (req: Request, res: Response) => {
 export const getUserByIdController = async (req: Request, res: Response) => {
   try {
     const foundUser = await UserServices.getUserById(req.params.id);
+    // if (!foundUser) {
+    //   res.json({ message: `cant find user ${req.body.email}` });
+    // }
+    // return;
     res.json(foundUser);
   } catch (error) {
     console.log(error);
@@ -49,7 +53,7 @@ export const createUserController = async (req: Request, res: Response) => {
 
     // Response back to Frontend
     if (user !== "available") res.json(user) && res.status(200);
-    else res.json({ message: "You have already registerd with this email!" });
+    else res.json({ message: "You have already registered with this email!" });
   } catch (error) {
     console.log(error);
   }
