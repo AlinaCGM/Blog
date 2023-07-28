@@ -3,7 +3,7 @@ import "./foodDetail.css";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
+import { Box, CardActionArea } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Snackbar from "@mui/material/Snackbar";
@@ -20,9 +20,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../redux/store";
 import { useEffect, useState } from "react";
 import { fetchCommentByFoodId } from "./../../../redux/thunk/comment";
-import CommentItem from "../../comment/commentItem/CommentItem";
+import CommentItem from "../../comment/CommentItem";
 import { Link } from "react-router-dom";
 import { favoriteActions } from "../../../redux/slice/favorite";
+import TestAlina from "../../comment/TestAlina";
 
 type PropType = {
   food: FoodType;
@@ -40,8 +41,10 @@ const initialValues: InitialType = {
 
 const FoodDetail = ({ food }: PropType) => {
   const [open, setOpen] = useState(false);
+
   const user = useSelector((state: RootState) => state.user.user);
   const comments = useSelector((state: RootState) => state.comment.comments);
+  console.log(comments, "comments from FoodDetails some proms");
   const dispatch = useDispatch<AppDispatch>();
   const dispatchFav = useDispatch();
   const alert = useSelector((state: RootState) => state.favorite.alert);
@@ -50,7 +53,7 @@ const FoodDetail = ({ food }: PropType) => {
 
   useEffect(() => {
     dispatch(fetchCommentByFoodId(food._id));
-  }, [dispatch, comments, food._id]);
+  }, [dispatch, food._id]);
 
   console.log(comments, "comments");
 
@@ -93,7 +96,6 @@ const FoodDetail = ({ food }: PropType) => {
   // Function Call on Submit
   const token = localStorage.getItem("token");
 
-  // rome-ignore lint/suspicious/noExplicitAny: <explanation>
   const submitHandler = (values: InitialType, { resetForm }: any) => {
     const userComment = {
       userId: user._id,
@@ -107,6 +109,7 @@ const FoodDetail = ({ food }: PropType) => {
       .then((res) => {
         if (res.status === 200) {
           resetForm({ values: initialValues });
+          // fetchUserComment(res.data._id); // fetch the user comment
         }
       });
   };
@@ -190,9 +193,14 @@ const FoodDetail = ({ food }: PropType) => {
             }}
           </Formik>
         </div>
-        {comments.map((comment) => {
-          return <CommentItem key={comment._id} comment={comment} />;
-        })}
+        <Box sx={{ width: "100%", height: "50rem", border: "1px solid red" }}>
+          <Typography>alina</Typography>
+          {Array.isArray(comments) &&
+            comments.map((comment) => {
+              return <CommentItem key={comment._id} userComment={comment} />;
+            })}
+        </Box>
+        <TestAlina />
       </div>
     </>
   );

@@ -40,7 +40,7 @@ const AddFood = () => {
 
   // Function Call on Submit
   const token = localStorage.getItem("token");
-  // rome-ignore lint/suspicious/noExplicitAny: <explanation>
+
   const submitHandler = (values: InitialType, { resetForm }: any) => {
     axios
       .post(`${url}/food`, values, {

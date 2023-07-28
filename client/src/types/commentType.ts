@@ -3,7 +3,7 @@ export type CommentType = {
   userId: string;
   foodId: string;
   message: string;
-  date: Date;
-  rate: number;
-  isConfirmed: boolean;
+  // date: Date;
+  // rate: number;
+  // isConfirmed: boolean;
 };
