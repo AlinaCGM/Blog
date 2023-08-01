@@ -24,7 +24,8 @@ import CommentItem from "../../comment/CommentItem";
 import { Link } from "react-router-dom";
 import { favoriteActions } from "../../../redux/slice/favorite";
 import TestAlina from "../../comment/TestAlina";
-
+import { UserCommentType } from "../../../types/commentType";
+import { commentActions } from "../../../redux/slice/comment";
 type PropType = {
   food: FoodType;
 };
@@ -44,6 +45,11 @@ const FoodDetail = ({ food }: PropType) => {
 
   const user = useSelector((state: RootState) => state.user.user);
   const comments = useSelector((state: RootState) => state.comment.comments);
+
+  const allComments = useSelector(
+    (state: RootState) => state.comment.allComments
+  );
+
   console.log(comments, "comments from FoodDetails some proms");
   const dispatch = useDispatch<AppDispatch>();
   const dispatchFav = useDispatch();
@@ -96,22 +102,24 @@ const FoodDetail = ({ food }: PropType) => {
   // Function Call on Submit
   const token = localStorage.getItem("token");
 
-  const submitHandler = (values: InitialType, { resetForm }: any) => {
-    const userComment = {
+  const submitHandler = async (values: InitialType, { resetForm }: any) => {
+    const userComment: UserCommentType = {
       userId: user._id,
       message: values.description,
     };
-    console.log(userComment, "user comment");
-    axios
-      .post(`${url}/comments/${food._id}`, userComment, {
+
+    try {
+      const res = await axios.post(`${url}/comments/${food._id}`, userComment, {
         headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          resetForm({ values: initialValues });
-          // fetchUserComment(res.data._id); // fetch the user comment
-        }
       });
+
+      if (res.status === 200) {
+        resetForm({ values: initialValues });
+        dispatch(commentActions.addComment(res.data));
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -158,7 +166,6 @@ const FoodDetail = ({ food }: PropType) => {
         </div>
 
         <div className="food-txtfields">
-          <h4>Your Comments</h4>
           <Formik
             initialValues={initialValues}
             validationSchema={foodDetailSchema}
@@ -195,12 +202,16 @@ const FoodDetail = ({ food }: PropType) => {
         </div>
         <Box sx={{ width: "100%", height: "50rem", border: "1px solid red" }}>
           <Typography>alina</Typography>
-          {Array.isArray(comments) &&
-            comments.map((comment) => {
-              return <CommentItem key={comment._id} userComment={comment} />;
-            })}
+          <p>
+            aici
+            {Array.isArray(comments) &&
+              comments
+                .filter((comment) => comment.foodId === food._id) // filter comments by food._id
+                .map((comment) => {
+                  return <CommentItem key={comment._id} comment={comment} />;
+                })}
+          </p>
         </Box>
-        <TestAlina />
       </div>
     </>
   );

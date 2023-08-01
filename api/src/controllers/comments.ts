@@ -12,11 +12,12 @@ export const getCommentsByUserIdController = async (
 ) => {
   try {
     const commentList = await commentServices.getCommentsByUserId(
-      req.params.id
+      req.params.userId
     );
     res.json(commentList);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: "Error getting comments by user ID" });
   }
 };
 
@@ -31,6 +32,7 @@ export const getCommentsByFoodIdController = async (
     res.json(commentList);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: "Error getting comments by food ID" });
   }
 };
 

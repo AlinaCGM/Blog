@@ -2,25 +2,41 @@ import { createSlice } from "@reduxjs/toolkit";
 import { CommentType } from "../../types/commentType";
 
 type InitialType = {
-  comments: { [foodId: string]: CommentType[] };
+  comments: CommentType[];
   allComments: CommentType[];
 };
 
 const initialState: InitialType = {
-  comments: {},
+  comments: [],
   allComments: [],
 };
-
+// const commentSlice = createSlice({
+//   name: "comment",
+//   initialState,
+//   reducers: {
+//     getCommentByFoodId: (state, action) => {
+//       state.comments = action.payload.comments;
+//     },
+//     getAllcomments: (state, action) => {
+//       state.allComments = action.payload;
+//     },
+//     addComment: (state, action) => {
+//       state.comments.push(action.payload); // Add the comment to the state.comments array
+//     },
+//   },
+// });
 const commentSlice = createSlice({
   name: "comment",
   initialState,
   reducers: {
     getCommentByFoodId: (state, action) => {
-      const { foodId, comments } = action.payload;
-      state.comments[foodId] = comments;
+      state.comments = action.payload;
     },
-    getAllComments: (state, action) => {
+    getAllcomments: (state, action) => {
       state.allComments = action.payload;
+    },
+    addComment: (state, action) => {
+      state.comments.unshift(action.payload); // Add the comment to the state.comments array
     },
   },
 });

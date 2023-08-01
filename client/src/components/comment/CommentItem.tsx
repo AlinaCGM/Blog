@@ -7,21 +7,22 @@ import { RootState } from "../../redux/store";
 import "./CommentItem.css";
 import { Typography } from "@mui/material";
 type PropType = {
-  userComment: CommentType;
+  comment: CommentType;
 };
-const CommentItem = ({ userComment }: PropType) => {
-  console.log(userComment, "userComment from CommentItem.ts");
-  const user = useSelector((state: RootState) => state.user.user);
+const CommentItem = ({ comment }: PropType) => {
+  console.log(comment, "userComment from CommentItem.ts");
+  const userList = useSelector((state: RootState) => state.userList.usersData);
   const action = (
     <Button color="secondary" size="small">
-      {user.firstName}
+      {comment.userId}
     </Button>
   );
   return (
     <div className="comment-item">
       <Typography>comment alina balerina</Typography>
+
       <Stack spacing={2} sx={{ maxWidth: 600, ml: 30 }}>
-        <SnackbarContent message={userComment.message} action={action} />
+        <SnackbarContent message={comment.message} action={action} />
       </Stack>
     </div>
   );

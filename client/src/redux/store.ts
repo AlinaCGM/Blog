@@ -13,7 +13,7 @@ const store = configureStore({
     user: userReducer,
     userList: userListReducer,
     search: searchReducer,
-    favorite: favoriteReducer
+    favorite: favoriteReducer,
   },
 });
 

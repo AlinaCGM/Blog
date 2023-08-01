@@ -9,7 +9,10 @@ const createComment = async (
 const getCommentsByUserId = async (
   userIdRequest: string
 ): Promise<CommentDocument[]> => {
-  return Comment.find({ userId: userIdRequest }).populate("userId");
+  return Comment.find({ userId: userIdRequest }).populate(
+    "userId",
+    "firstName lastName"
+  );
 };
 
 const getCommentsByFoodId = async (

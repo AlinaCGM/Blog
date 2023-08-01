@@ -9,6 +9,7 @@ export type UserDocument = Document & {
   isBanned: boolean;
   image: string;
   isGoogleLogin: boolean;
+  passport?: any;
 };
 
 const UserSchema = new mongoose.Schema({

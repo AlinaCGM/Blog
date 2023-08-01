@@ -30,7 +30,7 @@ const CmtManagement = () => {
   console.log(allComments, "all comments");
   useEffect(() => {
     dispatch(fetchAllComments());
-  }, [dispatch,allComments]);
+  }, [dispatch, allComments]);
 
   useEffect(() => {
     dispatch(fetchUsers());

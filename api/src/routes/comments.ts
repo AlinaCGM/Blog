@@ -1,5 +1,3 @@
-// comment router here
-
 import { Router } from "express";
 import passport from "passport";
 import AdminCheck from "../middlewares/adminCheck";
@@ -14,14 +12,13 @@ import {
 
 const commentRouter = Router();
 
-// Call Express Methods for comments Collection (DB) by using commentRouter
 commentRouter.get(
   "/:userId",
   passport.authenticate("jwt", { session: false }),
   getCommentsByUserIdController
 );
 
-commentRouter.get("/:foodId", getCommentsByFoodIdController);
+commentRouter.get("/food/:foodId", getCommentsByFoodIdController);
 
 commentRouter.get(
   "/",
