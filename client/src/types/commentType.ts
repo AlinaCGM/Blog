@@ -1,4 +1,3 @@
-import { UserType } from "./userType";
 export type CommentType = {
   _id: string;
   userId: string;
@@ -11,7 +10,4 @@ export type CommentType = {
 export type UserCommentType = {
   userId: string;
   message: string;
-};
-export type CommentWithUserType = Omit<CommentType, "userId"> & {
-  userId: UserType;
 };

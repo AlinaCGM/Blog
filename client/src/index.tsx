@@ -17,7 +17,10 @@ const theme = createTheme({
     fontFamily: ["Maven Pro", "sans-serif"].join(","),
   },
 });
-const clientID = process.env.REACT_APP_CLIENT_ID as string;
+
+const clientID =
+  "423425518758-tqgm9n6b5bc8ed0mrbmud8nsrpk5or24.apps.googleusercontent.com";
+// process.env.REACT_APP_CLIENT_ID as string;
 
 root.render(
   <React.StrictMode>

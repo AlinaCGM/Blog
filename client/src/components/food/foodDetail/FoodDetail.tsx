@@ -1,41 +1,46 @@
-import "./foodDetail.css";
-
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { Box, CardActionArea } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import Snackbar from "@mui/material/Snackbar";
-import { Alert, Button, IconButton } from "@mui/material";
-
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import { Form, Formik } from "formik";
 
-import { FoodType } from "../../../types/foodType";
-import { TextField } from "@mui/material";
-import foodDetailSchema from "./foodDetailSchema";
+import {
+  Box,
+  Button,
+  Card,
+  CardActionArea,
+  CardMedia,
+  Container,
+  IconButton,
+  Snackbar,
+  TextField,
+  Typography,
+} from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { Alert } from "@mui/material";
+
 import { url } from "../../../App";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../redux/store";
-import { useEffect, useState } from "react";
-import { fetchCommentByFoodId } from "./../../../redux/thunk/comment";
-import CommentItem from "../../comment/CommentItem";
-import { Link } from "react-router-dom";
-import { favoriteActions } from "../../../redux/slice/favorite";
-import TestAlina from "../../comment/TestAlina";
+import { FoodType } from "../../../types/foodType";
 import { UserCommentType } from "../../../types/commentType";
+import { RootState, AppDispatch } from "../../../redux/store";
+import { favoriteActions } from "../../../redux/slice/favorite";
 import { commentActions } from "../../../redux/slice/comment";
+import { fetchCommentByFoodId } from "../../../redux/thunk/comment";
+
+import CommentItem from "../../comment/CommentItem";
+import foodDetailSchema from "./foodDetailSchema";
+
+import "./foodDetail.css";
+
 type PropType = {
   food: FoodType;
 };
 
-// Initial Type
 type InitialType = {
   description: string;
 };
 
-// Initial Values
 const initialValues: InitialType = {
   description: "",
 };
@@ -46,22 +51,17 @@ const FoodDetail = ({ food }: PropType) => {
   const user = useSelector((state: RootState) => state.user.user);
   const comments = useSelector((state: RootState) => state.comment.comments);
 
-  const allComments = useSelector(
-    (state: RootState) => state.comment.allComments
-  );
-
-  console.log(comments, "comments from FoodDetails some proms");
   const dispatch = useDispatch<AppDispatch>();
-  const dispatchFav = useDispatch();
+
   const alert = useSelector((state: RootState) => state.favorite.alert);
   const favState = useSelector((state: RootState) => state.favorite.favorites);
-  let isFav = favState.some((item) => item.title === food.title);
+  const [isFav, setIsFav] = useState(
+    favState.some((item) => item.title === food.title)
+  );
 
   useEffect(() => {
     dispatch(fetchCommentByFoodId(food._id));
   }, [dispatch, food._id]);
-
-  console.log(comments, "comments");
 
   const handleClick = () => {
     setOpen(true);
@@ -74,13 +74,12 @@ const FoodDetail = ({ food }: PropType) => {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
   };
 
   const addToFavorite = () => {
-    dispatchFav(favoriteActions.addToFavorite(food));
-    dispatchFav(favoriteActions.showAlert("Recipe added to favorite!"));
+    dispatch(favoriteActions.addToFavorite(food));
+    dispatch(favoriteActions.showAlert("Recipe added to favorite!"));
     handleClick();
   };
   const removeFromFavorite = () => {
@@ -93,13 +92,13 @@ const FoodDetail = ({ food }: PropType) => {
   const favHandler = () => {
     if (isFav) {
       removeFromFavorite();
-      isFav = !isFav;
+      setIsFav(!isFav);
     } else {
       addToFavorite();
-      isFav = !isFav;
+      setIsFav(!isFav);
     }
   };
-  // Function Call on Submit
+
   const token = localStorage.getItem("token");
 
   const submitHandler = async (values: InitialType, { resetForm }: any) => {
@@ -200,18 +199,26 @@ const FoodDetail = ({ food }: PropType) => {
             }}
           </Formik>
         </div>
-        <Box sx={{ width: "100%", height: "50rem", border: "1px solid red" }}>
-          <Typography>alina</Typography>
-          <p>
-            aici
-            {Array.isArray(comments) &&
-              comments
-                .filter((comment) => comment.foodId === food._id) // filter comments by food._id
-                .map((comment) => {
-                  return <CommentItem key={comment._id} comment={comment} />;
-                })}
-          </p>
-        </Box>
+        <Container
+          maxWidth="sm"
+          style={{
+            height: "auto",
+            display: "flex",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <Box>
+            <p>
+              {Array.isArray(comments) &&
+                comments
+                  .filter((comment) => comment.foodId === food._id)
+                  .map((comment) => {
+                    return <CommentItem key={comment._id} comment={comment} />;
+                  })}
+            </p>
+          </Box>
+        </Container>
       </div>
     </>
   );

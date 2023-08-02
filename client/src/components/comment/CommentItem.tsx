@@ -1,30 +1,43 @@
+import { styled } from "@mui/material/styles";
 import Stack from "@mui/material/Stack";
 import SnackbarContent from "@mui/material/SnackbarContent";
 import Button from "@mui/material/Button";
 import { CommentType } from "../../types/commentType";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
-import "./CommentItem.css";
-import { Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
+
+// Styled SnackbarContent with transparent background and grey borders
+const StyledSnackbarContent = styled(SnackbarContent)(({ theme }) => ({
+  backgroundColor: "transparent",
+  border: `1px solid ${theme.palette.grey[300]}`,
+  borderRadius: theme.spacing(1),
+  color: theme.palette.grey[500],
+  textAlign: "center",
+}));
+
 type PropType = {
   comment: CommentType;
 };
+
 const CommentItem = ({ comment }: PropType) => {
   console.log(comment, "userComment from CommentItem.ts");
-  const userList = useSelector((state: RootState) => state.userList.usersData);
+
   const action = (
     <Button color="secondary" size="small">
-      {comment.userId}
+      {comment.rate}
     </Button>
   );
+
   return (
-    <div className="comment-item">
-      <Typography>comment alina balerina</Typography>
+    <Container>
+      <Typography variant="h6" sx={{ textAlign: "right", color: "grey" }}>
+        * * *
+      </Typography>
 
       <Stack spacing={2} sx={{ maxWidth: 600, ml: 30 }}>
-        <SnackbarContent message={comment.message} action={action} />
+        <StyledSnackbarContent message={comment.message} action={action} />
       </Stack>
-    </div>
+    </Container>
   );
 };
+
 export default CommentItem;
