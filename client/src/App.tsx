@@ -15,9 +15,9 @@ import AllRecipes from "./pages/AllRecipes";
 import DetailedFood from "./pages/DetailedFood";
 import FoodMng from "./pages/FoodMng";
 import UserMng from "./pages/UserMng";
-import CommentMng from './pages/CommentMng';
+import CommentMng from "./pages/CommentMng";
 
-export const url = "http://localhost:8000";
+export const url = "https://blog-api-t124.onrender.com";
 function App() {
   return (
     <Box className="App">
