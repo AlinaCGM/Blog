@@ -1,7 +1,6 @@
 import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
 import dotenv from "dotenv";
 import GoogleTokenStrategy from "passport-google-id-token";
-
 import UserServices from "../services/users";
 
 dotenv.config();

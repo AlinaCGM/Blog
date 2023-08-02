@@ -3,8 +3,8 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
-import User, { UserDocument } from "../models/User";
-
+import User from "../models/User";
+import { UserDocument } from "../models/User";
 import UserServices from "../services/users";
 import generateToken from "../utils/generateToken";
 
@@ -107,6 +107,9 @@ export const updateUserByIdController = async (req: Request, res: Response) => {
     console.log(error);
   }
 };
+interface AuthenticatedRequest extends Request {
+  user?: UserDocument; // Assuming 'UserDocument' is the correct type for your user data
+}
 //google part
 export const googleAuthenticate = async (req: Request, res: Response) => {
   try {
