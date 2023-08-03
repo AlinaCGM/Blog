@@ -18,16 +18,13 @@ const theme = createTheme({
   },
 });
 
-const clientID =
-  "423425518758-tqgm9n6b5bc8ed0mrbmud8nsrpk5or24.apps.googleusercontent.com";
-// process.env.REACT_APP_CLIENT_ID as string;
-
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID as string;
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Provider store={store}>
-          <GoogleOAuthProvider clientId={clientID}>
+          <GoogleOAuthProvider clientId={CLIENT_ID}>
             <App />
           </GoogleOAuthProvider>
         </Provider>
@@ -36,7 +33,4 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
