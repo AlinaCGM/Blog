@@ -14,7 +14,12 @@ const root = ReactDOM.createRoot(
 );
 const theme = createTheme({
   typography: {
-    fontFamily: ["Maven Pro", "sans-serif"].join(","),
+    fontFamily: [
+      "Maven Pro",
+      "sans-serif",
+      "Dancing Script",
+      "Josefin Sans",
+    ].join(","),
   },
 });
 

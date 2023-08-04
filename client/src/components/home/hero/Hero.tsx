@@ -1,16 +1,89 @@
 import { Link } from "react-router-dom";
-// import "./hero.css";
-import { Box, CardMedia, Container, Typography } from "@mui/material";
-import Dish from "../../../assets/back5.png";
+import "./hero.css";
+import { Box, CardMedia, Typography } from "@mui/material";
+import Dish from "../../../assets/fish.jpg";
 import im1 from "../../../assets/im1.jpg";
 import im2 from "../../../assets/im2.jpg";
 import im3 from "../../../assets/im3.jpg";
-import { autoBatchEnhancer } from "@reduxjs/toolkit";
+import pepper from "../../../assets/pepper.png";
 
 const Hero = () => {
   return (
     <Box className="hero-container" sx={{ width: "90%", margin: "auto" }}>
-      <CardMedia component="img" width="90%" image={Dish} alt="Paella dish" />
+      <Box>
+        <CardMedia
+          component="img"
+          width="90%"
+          image={Dish}
+          alt="Paella dish"
+          sx={{
+            position: "relative",
+            height: {
+              xs: "20vh",
+              sm: "40vh",
+              md: "60vh",
+            },
+          }}
+        />
+        <Box
+          sx={{
+            // backgroundColor: "rgb(172, 191, 197, 0.2)",
+            position: "absolute",
+            top: {
+              xs: "70px",
+              sm: "20%",
+              md: "25%",
+              lg: "20%",
+            },
+            right: {
+              xs: "13%",
+              sm: "10%",
+              md: "10%",
+              lg: "15%",
+            },
+            borderBottom: "1px solid #5a6e88",
+            padding: "5px",
+          }}
+        >
+          <Typography
+            className="header"
+            sx={{
+              color: " #374659",
+              fontSize: {
+                xs: "26px",
+                sm: "52px",
+                md: "60px",
+                lg: "85px",
+              },
+              fontFamily: "Dancing Script",
+            }}
+          >
+            Let's cook !
+          </Typography>
+          <Typography
+            className="header2"
+            sx={{
+              fontFamily: " Josefin Sans",
+              color: " #374659",
+              lineHeight: {
+                xs: "14px",
+                sm: "24px",
+                md: "40px",
+                lg: "36px",
+              },
+              fontSize: {
+                xs: "14px",
+                sm: "24px",
+                md: "32px",
+                lg: "34px",
+              },
+            }}
+          >
+            Find Peace Of Mind <br />
+            in The Kitchen
+          </Typography>
+        </Box>
+      </Box>
       <Typography
         variant="h5"
         sx={{
@@ -70,18 +143,28 @@ const Hero = () => {
           }}
         />
       </Box>
-      <Box sx={{ width: "90%" }}>
+      <Box sx={{ width: "90%", marginInline: "auto" }}>
         <Typography
           sx={{
-            marginBlock: "20px",
-            lineHeight: "15px",
-            textAlign: "start",
-            marginInline: "auto",
+            marginBlock: {
+              xs: "18px",
+              sm: "30px",
+              md: "36px",
+              lg: "50px",
+            },
+            lineHeight: {
+              xs: "18px",
+              sm: "20px",
+              md: "26px",
+              lg: "32px",
+            },
+            textAlign: "justify",
+
             fontSize: {
               xs: "14px",
-              sm: "18px",
-              md: "18px",
-              lg: "18px",
+              sm: "20px",
+              md: "22px",
+              lg: "28px",
             },
           }}
         >
@@ -91,6 +174,21 @@ const Hero = () => {
           one of our recipes we want you to say, “How was it that simple but
           still tastes that good?!”
         </Typography>
+      </Box>
+      <Box>
+        <CardMedia
+          component="img"
+          image={pepper}
+          alt="Paella dish"
+          sx={{
+            height: {
+              xs: "70px",
+              sm: "120px",
+              md: "180px",
+              lg: "280px",
+            },
+          }}
+        />
       </Box>
     </Box>
   );
