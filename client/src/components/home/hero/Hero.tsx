@@ -92,7 +92,7 @@ const Hero = () => {
           still tastes that good?!”
         </Typography>
       </Box>
-    </Box>cd 
+    </Box>
   );
 };
 export default Hero;
