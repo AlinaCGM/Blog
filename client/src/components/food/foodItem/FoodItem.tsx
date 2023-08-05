@@ -1,20 +1,76 @@
 import { useSelector, useDispatch } from "react-redux";
-
-import "./foodItem.css";
-import { favoriteActions } from "../../../redux/slice/favorite";
-import { FoodType } from "../../../types/foodType";
-import { RootState } from "../../../redux/store";
-
-import Rating from "@mui/material/Rating";
-import Snackbar from "@mui/material/Snackbar";
-import { Alert, Button, IconButton } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { Rating, Button, IconButton, Snackbar, Alert } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
+import { favoriteActions } from "../../../redux/slice/favorite";
+import { FoodType } from "../../../types/foodType";
+import { RootState } from "../../../redux/store";
+
+const FoodItemContainer = styled("div")(({ theme }) => ({
+  [theme.breakpoints.down("xs")]: {
+    width: "100%",
+  },
+  [theme.breakpoints.between("sm", "md")]: {
+    width: "40%",
+  },
+  [theme.breakpoints.between("md", "lg")]: {
+    width: "30%",
+  },
+  [theme.breakpoints.up("lg")]: {
+    width: "30%",
+  },
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  gap: "20px",
+}));
+
+const FoodItemHeading = styled("h3")({
+  fontSize: "calc(100% + 0.3vw)",
+  border: "1px solid gray",
+  padding: "10px 10px",
+  height: "100px",
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
+const FoodItemImageFrame = styled("div")(({ theme }) => ({
+  width: "100%",
+  [theme.breakpoints.down("xs")]: {
+    height: "200px",
+  },
+  [theme.breakpoints.between("sm", "md")]: {
+    height: "150px",
+  },
+  [theme.breakpoints.between("md", "lg")]: {
+    height: "180px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    height: "300px",
+  }, // Set a fixed height for the image frame
+}));
+
+const FoodItemImage = styled("img")({
+  width: "100%",
+  height: "100%", // Set the image height to 100% to fit within the frame
+});
+
+const FoodItemRateFav = styled("div")({
+  display: "flex",
+  width: "100%",
+  justifyContent: "space-between",
+  alignItems: "center",
+});
+
 type PropType = {
   food: FoodType;
 };
+
 const FoodItem = ({ food }: PropType) => {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
@@ -32,9 +88,9 @@ const FoodItem = ({ food }: PropType) => {
     if (reason === "clickaway") {
       return;
     }
-
     setOpen(false);
   };
+
   // Check Favorite
   let isFav = favState.some((item) => item.title === food.title);
 
@@ -64,14 +120,14 @@ const FoodItem = ({ food }: PropType) => {
   };
 
   return (
-    <div className="food-item-container">
-      <h3>{food.title}</h3>
+    <FoodItemContainer sx={{ width: "90%", marginInline: "auto" }}>
+      <FoodItemHeading>{food.title}</FoodItemHeading>
       <Link to={`/food/${food._id}`}>
-        <div className="food-item-image-fram">
-          <img src={food.image} alt={food.title} />
-        </div>
+        <FoodItemImageFrame>
+          <FoodItemImage src={food.image} alt={food.title} />
+        </FoodItemImageFrame>
       </Link>
-      <div className="food-item-rate-fav">
+      <FoodItemRateFav>
         <div>
           <Rating
             name="half-rating"
@@ -85,12 +141,11 @@ const FoodItem = ({ food }: PropType) => {
             <FavoriteBorderIcon sx={{ color: isFav ? "red" : "gray" }} />
           </IconButton>
         </div>
-      </div>
+      </FoodItemRateFav>
       <p>{food.description.slice(0, 100)}...</p>
       <Link to={`/food/${food._id}`}>
-        <Button>Read more</Button>
+        <Button></Button>
       </Link>
-
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
         <Alert
           onClose={handleClose}
@@ -100,7 +155,8 @@ const FoodItem = ({ food }: PropType) => {
           {alert}
         </Alert>
       </Snackbar>
-    </div>
+    </FoodItemContainer>
   );
 };
+
 export default FoodItem;

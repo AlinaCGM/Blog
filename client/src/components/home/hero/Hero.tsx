@@ -88,6 +88,7 @@ const Hero = () => {
         variant="h5"
         sx={{
           color: " #000000",
+          fontFamily: " Josefin Sans",
           fontSize: {
             xs: "18px",
             sm: "26px",
@@ -100,7 +101,7 @@ const Hero = () => {
           },
         }}
       >
-        Welcome to my food blog
+        Find you own perfect recipe
       </Typography>
       <Box sx={{ width: "100%", display: "flex", gap: "10px", margin: "auto" }}>
         <CardMedia
@@ -166,13 +167,14 @@ const Hero = () => {
               md: "22px",
               lg: "28px",
             },
+            fontFamily: " Josefin Sans",
           }}
         >
           Expect new recipes weekly, with a mix of savory and sweet including{" "}
           <em>desserts, breakfasts, entrées, sides, snacks,</em> and more{" "}
-          <Link to="/all-recipes">(find all recipes here).</Link> When you make
-          one of our recipes we want you to say, “How was it that simple but
-          still tastes that good?!”
+          <Link to="/all-recipes"> here .</Link> When you make one of our
+          recipes we want you to say, “How was it that simple but still tastes
+          that good?!”
         </Typography>
       </Box>
       <Box>

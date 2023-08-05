@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../redux/store";
 import FoodItem from "../foodItem/FoodItem";
 import { fetchFoodData } from "./../../../redux/thunk/food";
-import "./foodList.css";
 import SearchBar from "../../search/SearchBar";
+import { Box } from "@mui/material";
 
 const FoodList = () => {
   const foodList = useSelector((state: RootState) => state.food.food);
@@ -22,7 +22,15 @@ const FoodList = () => {
       <div>
         <SearchBar />
       </div>
-      <div className="food-list">
+      <Box
+        className="food-list"
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: "20px",
+        }}
+      >
         {foodList.length !== 0 ? (
           foodSearchList.length !== 0 ? (
             foodSearchList.map((item) => {
@@ -39,7 +47,7 @@ const FoodList = () => {
             <em>Please wait...</em>
           </div>
         )}
-      </div>
+      </Box>
     </>
   );
 };
