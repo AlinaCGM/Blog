@@ -45,6 +45,12 @@ const FoodList = () => {
           <div className="loading">
             <i className="fas fa-spinner fa-spin fa-xl" />
             <em>Please wait...</em>
+            <em>
+              <em>
+                The rendering process takes a few minutes due to data retrieval
+                from MongoDB.
+              </em>
+            </em>
           </div>
         )}
       </Box>

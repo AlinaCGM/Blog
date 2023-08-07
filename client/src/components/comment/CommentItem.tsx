@@ -3,7 +3,7 @@ import Stack from "@mui/material/Stack";
 import SnackbarContent from "@mui/material/SnackbarContent";
 import Button from "@mui/material/Button";
 import { CommentType } from "../../types/commentType";
-import { Container, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 
 // Styled SnackbarContent with transparent background and grey borders
 const StyledSnackbarContent = styled(SnackbarContent)(({ theme }) => ({
@@ -28,15 +28,26 @@ const CommentItem = ({ comment }: PropType) => {
   );
 
   return (
-    <Container>
-      <Typography variant="h6" sx={{ textAlign: "right", color: "grey" }}>
-        * * *
-      </Typography>
+    <Box
+      sx={{
+        width: {
+          xs: "90%",
+          sm: "60%",
+          md: "50%",
+          lg: "40%",
+        },
+        margin: "auto",
+      }}
+    >
+      <Typography
+        variant="h6"
+        sx={{ textAlign: "right", color: "grey", marginBlock: "20px" }}
+      ></Typography>
 
-      <Stack spacing={2} sx={{ maxWidth: 600, ml: 30 }}>
+      <Stack spacing={2}>
         <StyledSnackbarContent message={comment.message} action={action} />
       </Stack>
-    </Container>
+    </Box>
   );
 };
 

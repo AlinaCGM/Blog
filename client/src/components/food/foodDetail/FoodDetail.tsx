@@ -122,107 +122,120 @@ const FoodDetail = ({ food }: PropType) => {
   };
 
   return (
-    <>
-      <div className="food-detail">
-        <div className="food-recipe">
-          <Card sx={{ maxWidth: 530 }}>
+    <Box>
+      <Box
+        className="food-recipe"
+        sx={{
+          display: {
+            xs: "flexBlock",
+            md: "flex",
+          },
+          marginBlock: "30px",
+          width: "90%",
+          marginInline: "auto",
+        }}
+      >
+        <Box>
+          <Card sx={{ maxWidth: "500px" }}>
             <CardActionArea>
               <CardMedia
                 component="img"
-                height="cover"
+                // height="cover"
                 image={food.image}
                 alt={food.title}
               />
             </CardActionArea>
           </Card>
-        </div>
-        <div className="food-title">
-          <h1>{food.title}</h1>
-          <h3>{food.category}</h3>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ maxWidth: 800, lineHeight: 2 }}
-          >
-            {food.description}
-          </Typography>
-
-          <Link to="/all-recipes">
-            <IconButton sx={{ mt: 2 }}>
-              <ArrowBackIcon />
-            </IconButton>
-          </Link>
-          <IconButton onClick={favHandler} sx={{ mt: 2 }}>
-            <FavoriteBorderIcon sx={{ color: isFav ? "red" : "gray" }} />
-          </IconButton>
-          <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-            <Alert
-              onClose={handleClose}
-              severity={isFav ? "success" : "error"}
-              sx={{ width: "100%" }}
+        </Box>
+        <Box sx={{ paddingInline: "20px" }}>
+          <Box className="food-title">
+            <h1>{food.title}</h1>
+            <h3>{food.category}</h3>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{ maxWidth: 800, lineHeight: 2 }}
             >
-              {alert}
-            </Alert>
-          </Snackbar>
-        </div>
+              {food.description}
+            </Typography>
 
-        <div className="food-txtfields">
-          <Formik
-            initialValues={initialValues}
-            validationSchema={foodDetailSchema}
-            onSubmit={submitHandler}
-          >
-            {({ values, errors, touched, handleChange }) => {
-              return (
-                <Form>
-                  <TextField
-                    className="textBox"
-                    label="Description"
-                    name="description"
-                    multiline
-                    rows={10}
-                    onChange={handleChange}
-                    value={values.description}
-                  />
-                  {errors.description && touched.description ? (
-                    <div className="error-message">{errors.description}</div>
-                  ) : null}
-                  <div>
-                    <Button
-                      sx={{ width: 300, mt: 1 }}
-                      type="submit"
-                      variant="outlined"
-                    >
-                      Post Your Comment
-                    </Button>
-                  </div>
-                </Form>
-              );
-            }}
-          </Formik>
-        </div>
-        <Container
-          maxWidth="sm"
-          style={{
-            height: "auto",
-            display: "flex",
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
-          <Box>
-            <p>
-              {Array.isArray(comments) &&
-                comments
-                  .filter((comment) => comment.foodId === food._id)
-                  .map((comment) => {
-                    return <CommentItem key={comment._id} comment={comment} />;
-                  })}
-            </p>
+            <Link to="/all-recipes">
+              <IconButton sx={{ mt: 2 }}>
+                <ArrowBackIcon />
+              </IconButton>
+            </Link>
+            <IconButton onClick={favHandler} sx={{ mt: 2 }}>
+              <FavoriteBorderIcon sx={{ color: isFav ? "red" : "gray" }} />
+            </IconButton>
+            <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+              <Alert
+                onClose={handleClose}
+                severity={isFav ? "success" : "error"}
+                sx={{ width: "100%" }}
+              >
+                {alert}
+              </Alert>
+            </Snackbar>
           </Box>
-        </Container>
-      </div>
-    </>
+        </Box>
+      </Box>
+
+      <Box className="food-txtfields">
+        <Formik
+          initialValues={initialValues}
+          validationSchema={foodDetailSchema}
+          onSubmit={submitHandler}
+        >
+          {({ values, errors, touched, handleChange }) => {
+            return (
+              <Form>
+                <TextField
+                  sx={{
+                    width: {
+                      xs: "90%",
+                      sm: "60%",
+                      md: "50%",
+                      lg: "35%",
+                    },
+                  }}
+                  className="textBox"
+                  label="Leave a comment"
+                  name="description"
+                  multiline
+                  rows={10}
+                  onChange={handleChange}
+                  value={values.description}
+                />
+                {errors.description && touched.description ? (
+                  <div className="error-message">{errors.description}</div>
+                ) : null}
+                <Box>
+                  <Button
+                    sx={{ width: "200px", mt: 1, marginInline: "auto" }}
+                    type="submit"
+                    variant="outlined"
+                  >
+                    Post Your Comment
+                  </Button>
+                </Box>
+              </Form>
+            );
+          }}
+        </Formik>
+      </Box>
+      <Container>
+        <Box>
+          <Typography>
+            {Array.isArray(comments) &&
+              comments
+                .filter((comment) => comment.foodId === food._id)
+                .map((comment) => {
+                  return <CommentItem key={comment._id} comment={comment} />;
+                })}
+          </Typography>
+        </Box>
+      </Container>
+    </Box>
   );
 };
 
