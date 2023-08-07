@@ -26,6 +26,7 @@ const FavoriteItem = ({ favorite }: PropType) => {
           <img src={favorite.image} height={80} alt={favorite.title} />
         </TableCell>
         <TableCell align="center">{favorite.title}</TableCell>
+        <TableCell align="center">{favorite.category}</TableCell>
         <TableCell align="center">
           {favorite.description.slice(0, 200)} ...
         </TableCell>

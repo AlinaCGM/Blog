@@ -11,6 +11,7 @@ const initialState: InitialType = {
   foodDetail: {
     _id: "",
     title: "",
+    category: "",
     description: "",
     image: "",
     status: true,

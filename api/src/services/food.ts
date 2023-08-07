@@ -1,6 +1,6 @@
 import Food, { FoodDocument } from "../models/Food";
 
-const createFood = async (food: FoodDocument): Promise<FoodDocument> => {
+export const createFood = async (food: FoodDocument): Promise<FoodDocument> => {
   return food.save();
 };
 

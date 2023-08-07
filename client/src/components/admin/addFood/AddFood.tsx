@@ -11,6 +11,7 @@ import "./addFood.css";
 type InitialType = {
   title: string;
   image: string;
+  category: string;
   description: string;
 };
 
@@ -34,6 +35,7 @@ const AddFood = () => {
   // Initial Values
   const initialValues: InitialType = {
     title: "",
+    category: "",
     image: "",
     description: "",
   };
@@ -78,6 +80,18 @@ const AddFood = () => {
                 />
                 {errors.title && touched.title ? (
                   <div className="error-message">{errors.title}</div>
+                ) : null}
+              </div>
+              <div>
+                <TextField
+                  className="add-form-text"
+                  label="Category"
+                  name="category"
+                  onChange={handleChange}
+                  value={values.category}
+                />
+                {errors.category && touched.category ? (
+                  <div className="error-message">{errors.category}</div>
                 ) : null}
               </div>
               <div>

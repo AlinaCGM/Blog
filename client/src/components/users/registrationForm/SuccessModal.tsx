@@ -47,7 +47,7 @@ export default function SuccessModal({ open, setOpen, name }: PropType) {
               Welcome {name}!
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              You are registerd successfully!
+              You registered successfully!
             </Typography>
             <Link to="/login" style={{ textDecoration: "none" }}>
               <Button>Login</Button>

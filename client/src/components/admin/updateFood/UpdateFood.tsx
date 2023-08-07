@@ -12,6 +12,7 @@ import axios from "axios";
 // Type Declaration
 type InitialValues = {
   title: string;
+  category: string;
   image: string;
   description: string;
 };
@@ -25,6 +26,7 @@ const UpdateFood = ({ foodToUpdate, setOpenModal }: PropType) => {
   // Initial Values
   const initialValues: InitialValues = {
     title: "",
+    category: "",
     image: "",
     description: "",
   };
@@ -37,9 +39,9 @@ const UpdateFood = ({ foodToUpdate, setOpenModal }: PropType) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        if (res.status === 200){
+        if (res.status === 200) {
           setOpenModal(false);
-        } 
+        }
       });
   };
 
@@ -64,6 +66,18 @@ const UpdateFood = ({ foodToUpdate, setOpenModal }: PropType) => {
                 />
                 {errors.title && touched.title ? (
                   <div className="error-message">{errors.title}</div>
+                ) : null}
+              </div>
+              <div>
+                <TextField
+                  className="update-food-text"
+                  label="Category"
+                  name="category"
+                  onChange={handleChange}
+                  defaultValue={foodToUpdate?.category}
+                />
+                {errors.category && touched.category ? (
+                  <div className="error-message">{errors.category}</div>
                 ) : null}
               </div>
               <div>

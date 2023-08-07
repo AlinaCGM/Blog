@@ -27,7 +27,7 @@ const FoodInformation = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const [foodToModal, setFoodToModal] = useState<FoodType>()
+  const [foodToModal, setFoodToModal] = useState<FoodType>();
 
   useEffect(() => {
     dispatch(fetchFoodData());
@@ -61,11 +61,10 @@ const FoodInformation = () => {
       });
   };
 
-  const updateFood = (id:string) => {
-    setOpenModal(true)
-    const foodToUpdate = foodList.find((item)=>item._id===id)
-    setFoodToModal(foodToUpdate)
-
+  const updateFood = (id: string) => {
+    setOpenModal(true);
+    const foodToUpdate = foodList.find((item) => item._id === id);
+    setFoodToModal(foodToUpdate);
   };
 
   return (
@@ -83,6 +82,9 @@ const FoodInformation = () => {
               </TableCell>
               <TableCell>
                 <b>Title</b>
+              </TableCell>
+              <TableCell>
+                <b>Category</b>
               </TableCell>
               <TableCell>
                 <b>Description</b>
@@ -106,9 +108,10 @@ const FoodInformation = () => {
                     <img src={food.image} height={70} alt={food.title} />
                   </TableCell>
                   <TableCell>{food.title}</TableCell>
+                  <TableCell>{food.category}</TableCell>
                   <TableCell>{food.description.slice(0, 150)} ...</TableCell>
                   <TableCell>
-                    <IconButton onClick={()=>updateFood(food._id)}>
+                    <IconButton onClick={() => updateFood(food._id)}>
                       <EditIcon />
                     </IconButton>
                   </TableCell>
@@ -123,7 +126,11 @@ const FoodInformation = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      <UpdateFoodModal open={openModal} setOpenModal={setOpenModal} foodToModal={foodToModal}/>
+      <UpdateFoodModal
+        open={openModal}
+        setOpenModal={setOpenModal}
+        foodToModal={foodToModal}
+      />
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
           Product removed successfully!

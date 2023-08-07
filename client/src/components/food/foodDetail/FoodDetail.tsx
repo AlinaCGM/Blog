@@ -138,6 +138,7 @@ const FoodDetail = ({ food }: PropType) => {
         </div>
         <div className="food-title">
           <h1>{food.title}</h1>
+          <h3>{food.category}</h3>
           <Typography
             variant="body2"
             color="text.secondary"
@@ -145,6 +146,7 @@ const FoodDetail = ({ food }: PropType) => {
           >
             {food.description}
           </Typography>
+
           <Link to="/all-recipes">
             <IconButton sx={{ mt: 2 }}>
               <ArrowBackIcon />

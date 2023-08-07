@@ -25,20 +25,47 @@ export const getFoodByIdController = async (req: Request, res: Response) => {
 };
 
 //2: Post Controller
+// export const createFoodController = async (req: Request, res: Response) => {
+//   try {
+//     // We'll get food here from FrontEnd | Client
+//     const { title, description, image, category } = req.body;
+
+//     const newFoodItem = new Food({
+//       title: title,
+//       description: description,
+//       image: image,
+//       category: category,
+//     });
+
+//     // New food item save in DB via services
+//     const foodItem = await FoodServices.createFood(newFoodItem);
+
+//     // Response back to Frontend
+//     res.json(foodItem);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 export const createFoodController = async (req: Request, res: Response) => {
   try {
-    // We'll get food here from FrontEnd | Client
     const { title, description, image } = req.body;
+    let { category } = req.body;
+
+    // if no category provided, set the default value
+    if (!category) {
+      category = "tasty";
+    }
+
+    // create a new Mongoose document
     const newFoodItem = new Food({
       title: title,
       description: description,
       image: image,
+      category: category,
     });
 
-    // New food item save in DB via services
     const foodItem = await FoodServices.createFood(newFoodItem);
 
-    // Response back to Frontend
     res.json(foodItem);
   } catch (error) {
     console.log(error);

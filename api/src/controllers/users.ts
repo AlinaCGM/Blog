@@ -8,6 +8,7 @@ import { UserDocument } from "../models/User";
 import UserServices from "../services/users";
 import generateToken from "../utils/generateToken";
 
+dotenv.config();
 //1: Get (User) Controller
 export const getUserListController = async (req: Request, res: Response) => {
   try {
@@ -58,7 +59,7 @@ export const createUserController = async (req: Request, res: Response) => {
     console.log(error);
   }
 };
-dotenv.config();
+
 const JWT_SECRET = process.env.JWT_SECRET as string;
 export const logInWithPassword = async (req: Request, res: Response) => {
   try {

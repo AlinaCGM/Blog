@@ -48,6 +48,9 @@ const FavoriteList = () => {
                     <strong>Title</strong>
                   </TableCell>
                   <TableCell align="center">
+                    <strong>Category</strong>
+                  </TableCell>
+                  <TableCell align="center">
                     <strong>Description</strong>
                   </TableCell>
                   <TableCell align="center">

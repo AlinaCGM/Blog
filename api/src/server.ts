@@ -8,7 +8,7 @@ mongoose
   .connect(process.env.MONGODB_URL as string)
   .then(() => {
     app.listen(port, () =>
-      console.log(`The server is runnig on http://localhost:${port}`)
+      console.log(`The server is running on http://localhost:${port}`)
     );
   })
   .catch((error: Error) => {
@@ -17,3 +17,4 @@ mongoose
     );
     process.exit(1);
   });
+console.log(process.env);
