@@ -12,7 +12,10 @@ type PropType = {
 const FavoriteItem = ({ favorite }: PropType) => {
   const dispatch = useDispatch();
   return (
-    <TableBody className="cart-item">
+    <TableBody
+      className="cart-item"
+      sx={{ border: "1px solid green", width: "90%" }}
+    >
       <TableRow
         key={favorite._id}
         sx={{

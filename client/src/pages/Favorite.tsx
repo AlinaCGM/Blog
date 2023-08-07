@@ -1,11 +1,11 @@
+import { Box } from "@mui/material";
 import FavoriteList from "../components/favorite/favoriteList/FavoriteList";
 
 const Favorite = () => {
   return (
-    <div className="favorite-page">
+    <Box>
       <FavoriteList />
-    </div>
+    </Box>
   );
- 
 };
 export default Favorite;

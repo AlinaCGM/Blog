@@ -31,8 +31,6 @@ import { fetchCommentByFoodId } from "../../../redux/thunk/comment";
 import CommentItem from "../../comment/CommentItem";
 import foodDetailSchema from "./foodDetailSchema";
 
-import "./foodDetail.css";
-
 type PropType = {
   food: FoodType;
 };
@@ -47,7 +45,7 @@ const initialValues: InitialType = {
 
 const FoodDetail = ({ food }: PropType) => {
   const [open, setOpen] = useState(false);
-
+  const [loginAlertOpen, setLoginAlertOpen] = useState(false);
   const user = useSelector((state: RootState) => state.user.user);
   const comments = useSelector((state: RootState) => state.comment.comments);
 
@@ -98,10 +96,26 @@ const FoodDetail = ({ food }: PropType) => {
       setIsFav(!isFav);
     }
   };
-
+  const handleLoginAlertOpen = () => {
+    setLoginAlertOpen(true);
+  };
+  const handleLoginAlertClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setLoginAlertOpen(false);
+  };
   const token = localStorage.getItem("token");
 
   const submitHandler = async (values: InitialType, { resetForm }: any) => {
+    if (!user || !token) {
+      handleLoginAlertOpen();
+      console.log("alert works");
+      return;
+    }
     const userComment: UserCommentType = {
       userId: user._id,
       message: values.description,
@@ -222,7 +236,27 @@ const FoodDetail = ({ food }: PropType) => {
             );
           }}
         </Formik>
+        <Snackbar
+          open={loginAlertOpen}
+          autoHideDuration={3000}
+          onClose={handleLoginAlertClose}
+          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          sx={{
+            position: "absolute",
+            top: "50%",
+            transform: "translateY(-50%)",
+          }}
+        >
+          <Alert
+            onClose={handleLoginAlertClose}
+            severity="error"
+            sx={{ width: "300px" }}
+          >
+            Please log in in order to leave a comment
+          </Alert>
+        </Snackbar>
       </Box>
+
       <Container>
         <Box>
           <Typography>

@@ -14,6 +14,7 @@ import {
   Paper,
   IconButton,
   Tooltip,
+  Box,
 } from "@mui/material";
 import BookmarkFavorite from "@mui/icons-material/BookmarkAddOutlined";
 
@@ -23,7 +24,7 @@ const FavoriteList = () => {
   );
 
   return (
-    <div>
+    <Box sx={{ border: "1px solid red", width: "90%", marginInline: "auto" }}>
       {favoriteList.length === 0 ? (
         <div>
           <Tooltip title="Back to products">
@@ -65,7 +66,7 @@ const FavoriteList = () => {
           </TableContainer>
         </Fragment>
       )}
-    </div>
+    </Box>
   );
 };
 

@@ -1,9 +1,9 @@
 import * as YUP from "yup";
 
 const foodDetailSchema = YUP.object().shape({
-    description: YUP.string()
+  description: YUP.string()
     .min(2, "Name Too Short!")
-    .required("*Required"),
+    .required("*Please write a comment"),
 });
 
 export default foodDetailSchema;
