@@ -1,8 +1,6 @@
 import updateFoodSchema from "./updateFoodSchema";
-
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-
 import { Form, Formik } from "formik";
 import "./updateFood.css";
 import { FoodType } from "../../../types/foodType";
@@ -14,7 +12,10 @@ type InitialValues = {
   title: string;
   category: string;
   image: string;
-  description: string;
+  description: {
+    ingredients: string;
+    instructions: string;
+  };
 };
 
 type PropType = {
@@ -28,14 +29,35 @@ const UpdateFood = ({ foodToUpdate, setOpenModal }: PropType) => {
     title: "",
     category: "",
     image: "",
-    description: "",
+    description: {
+      ingredients: "",
+      instructions: "",
+    },
   };
 
   // Function Call on Submit
   const token = localStorage.getItem("token");
   const submitHandler = (values: InitialValues) => {
+    // Convert comma-separated strings to arrays
+    const ingredientsArray: string[] = values.description.ingredients
+      .split(",")
+      .map((ingredient: string) => ingredient.trim());
+
+    const instructionsArray: string[] = values.description.instructions
+      .split(",")
+      .map((instruction: string) => instruction.trim());
+
+    // Create a new object with the converted arrays for submission
+    const postData = {
+      ...values,
+      description: {
+        ingredients: ingredientsArray,
+        instructions: instructionsArray,
+      },
+    };
+
     axios
-      .put(`${url}/food/${foodToUpdate?._id}`, values, {
+      .put(`${url}/food/${foodToUpdate?._id}`, postData, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -95,18 +117,41 @@ const UpdateFood = ({ foodToUpdate, setOpenModal }: PropType) => {
               <div>
                 <TextField
                   className="update-food-text"
-                  label="Description"
-                  name="description"
+                  label="Ingredients"
+                  name="description.ingredients"
                   multiline
-                  rows={10}
+                  rows={5}
                   onChange={handleChange}
-                  defaultValue={foodToUpdate?.description}
+                  defaultValue={foodToUpdate?.description?.ingredients.join(
+                    ", "
+                  )}
                 />
-                {errors.description && touched.description ? (
-                  <div className="error-message">{errors.description}</div>
+                {errors.description?.ingredients &&
+                touched.description?.ingredients ? (
+                  <div className="error-message">
+                    {errors.description.ingredients}
+                  </div>
                 ) : null}
               </div>
-
+              <div>
+                <TextField
+                  className="update-food-text"
+                  label="Instructions"
+                  name="description.instructions"
+                  multiline
+                  rows={5}
+                  onChange={handleChange}
+                  defaultValue={foodToUpdate?.description?.instructions.join(
+                    ", "
+                  )}
+                />
+                {errors.description?.instructions &&
+                touched.description?.instructions ? (
+                  <div className="error-message">
+                    {errors.description.instructions}
+                  </div>
+                ) : null}
+              </div>
               <div>
                 <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">
                   Update Recipe

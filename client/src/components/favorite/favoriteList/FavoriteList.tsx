@@ -39,7 +39,7 @@ const FavoriteList = () => {
               </IconButton>
             </Link>
           </Tooltip>
-          <em>Please add food recipe to the Favourites!</em>
+          <em>Please add food recipe to the Favorites!</em>
         </div>
       ) : (
         <Box
@@ -54,35 +54,6 @@ const FavoriteList = () => {
             return <FavoriteItem key={item._id} favorite={item} />;
           })}
         </Box>
-
-        // <Fragment>
-        //   <TableContainer component={Paper} style={{ marginTop: "50px" }}>
-        //     <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        //       <TableHead>
-        //         <TableRow sx={{ backgroundColor: "#e5e5e5" }}>
-        //           <TableCell align="center">
-        //             <strong>Food</strong>
-        //           </TableCell>
-        //           <TableCell align="center">
-        //             <strong>Title</strong>
-        //           </TableCell>
-        //           <TableCell align="center">
-        //             <strong>Category</strong>
-        //           </TableCell>
-        //           <TableCell align="center">
-        //             <strong>Description</strong>
-        //           </TableCell>
-        //           <TableCell align="center">
-        //             <strong>Remove</strong>
-        //           </TableCell>
-        //         </TableRow>
-        //       </TableHead>
-        //       {favoriteList.map((item, index) => {
-        //         return <FavoriteItem key={item._id} favorite={item} />;
-        //       })}
-        //     </Table>
-        //   </TableContainer>
-        // </Fragment>
       )}
     </Box>
   );

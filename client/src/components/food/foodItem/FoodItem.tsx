@@ -142,7 +142,8 @@ const FoodItem = ({ food }: PropType) => {
           </IconButton>
         </div>
       </FoodItemRateFav>
-      <p>{food.description.slice(0, 100)}...</p>
+      <p>{food.description.ingredients}</p>
+      <p>{food.description.instructions}</p>
       <Link to={`/food/${food._id}`}>
         <Button></Button>
       </Link>

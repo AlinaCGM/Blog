@@ -109,7 +109,8 @@ const FoodInformation = () => {
                   </TableCell>
                   <TableCell>{food.title}</TableCell>
                   <TableCell>{food.category}</TableCell>
-                  <TableCell>{food.description.slice(0, 150)} ...</TableCell>
+                  <TableCell>{food.description.ingredients} ...</TableCell>
+                  <TableCell> {food.description.instructions}...</TableCell>
                   <TableCell>
                     <IconButton onClick={() => updateFood(food._id)}>
                       <EditIcon />

@@ -48,43 +48,11 @@ const FavoriteItem = ({ favorite }: PropType) => {
 
         <Typography>{favorite.category}</Typography>
         <Typography variant="body2" color="text.secondary">
-          {favorite.description.slice(0, 200)}
+          {favorite.description.ingredients} ...
         </Typography>
+        <Typography>{favorite.description.instructions}...</Typography>
       </CardContent>
     </Card>
-
-    // <TableBody
-    //   className="cart-item"
-    //   sx={{ border: "1px solid green", width: "90%" }}
-    // >
-    //   <TableRow
-    //     key={favorite._id}
-    //     sx={{
-    //       "&:last-child td, &:last-child th": {
-    //         borderBottom: "1px solid lightgrey",
-    //       },
-    //       bgColor: "none",
-    //     }}
-    //   >
-    //     <TableCell align="center">
-    //       <img src={favorite.image} height={80} alt={favorite.title} />
-    //     </TableCell>
-    //     <TableCell align="center">{favorite.title}</TableCell>
-    //     <TableCell align="center">{favorite.category}</TableCell>
-    //     <TableCell align="center">
-    //       {favorite.description.slice(0, 200)} ...
-    //     </TableCell>
-    //     <TableCell align="center">
-    //       <IconButton
-    //         onClick={() =>
-    //           dispatch(favoriteActions.removeFromFavorite(favorite))
-    //         }
-    //       >
-    //         <FavoriteIcon sx={{ color: "red" }} />
-    //       </IconButton>
-    //     </TableCell>
-    //   </TableRow>
-    // </TableBody>
   );
 };
 
