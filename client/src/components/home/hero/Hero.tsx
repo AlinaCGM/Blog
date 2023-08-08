@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import "./hero.css";
-import { Box, CardMedia, Typography } from "@mui/material";
+import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import Dish from "../../../assets/fish.jpg";
-import im1 from "../../../assets/im1.jpg";
-import im2 from "../../../assets/im2.jpg";
-import im3 from "../../../assets/im3.jpg";
+import im1 from "../../../assets/meat.jpg";
+import im2 from "../../../assets/vegi.jpg";
+import im3 from "../../../assets/dessert.jpg";
+import im4 from "../../../assets/drinks.jpg";
 import pepper from "../../../assets/pepper.png";
 
 const Hero = () => {
@@ -103,46 +104,99 @@ const Hero = () => {
       >
         Find you own perfect recipe
       </Typography>
-      <Box sx={{ width: "100%", display: "flex", gap: "10px", margin: "auto" }}>
-        <CardMedia
-          component="img"
-          image={im1}
-          alt="Paella dish"
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          flexWrap: "wrap",
+          gap: 5,
+        }}
+      >
+        <Card
           sx={{
-            height: {
-              xs: "60px",
-              sm: "120px",
-              md: "180px",
-              lg: "230px",
+            width: {
+              sx: "80%",
+              sm: "40%",
+              md: "20%",
             },
           }}
-        />
-        <CardMedia
-          component="img"
-          image={im2}
-          alt="Paella dish"
+        >
+          <CardMedia
+            sx={{ height: 240, position: "relative" }}
+            component="img"
+            image={im1}
+            alt="Paella dish"
+          />
+          <CardContent sx={{ height: "25%" }}>
+            Whether you’re after sausages and burgers, chicken and fish, or
+            those all-important sides, we’ve got you covered. Here are our best
+            recipes.
+          </CardContent>
+        </Card>
+        <Card
           sx={{
-            height: {
-              xs: "60px",
-              sm: "120px",
-              md: "180px",
-              lg: "230px",
+            width: {
+              sx: "80%",
+              sm: "40%",
+              md: "20%",
             },
           }}
-        />
-        <CardMedia
-          component="img"
-          image={im3}
-          alt="Paella dish"
+        >
+          <CardMedia
+            sx={{ height: 240, position: "relative" }}
+            component="img"
+            image={im2}
+            alt="Paella dish"
+          />
+          <CardContent sx={{ height: "25%" }}>
+            Whether you want to mix up your usual rotation of vegetarian dinner
+            recipes, we’re betting that you’ll find what you’re looking for
+            here!
+          </CardContent>
+        </Card>
+        <Card
           sx={{
-            height: {
-              xs: "60px",
-              sm: "120px",
-              md: "180px",
-              lg: "230px",
+            width: {
+              sx: "80%",
+              sm: "40%",
+              md: "20%",
             },
           }}
-        />
+        >
+          <CardMedia
+            sx={{ height: 240, position: "relative" }}
+            component="img"
+            image={im3}
+            alt="Paella dish"
+          />
+          <CardContent sx={{ height: "25%" }}>
+            We've included many desserts that are ready in under an hour , so
+            you're not slaving away in the kitchen prepping a towering dessert
+            all day long.
+          </CardContent>
+        </Card>
+
+        <Card
+          sx={{
+            width: {
+              sx: "80%",
+              sm: "40%",
+              md: "20%",
+            },
+          }}
+        >
+          <CardMedia
+            sx={{ height: 240, position: "relative" }}
+            component="img"
+            image={im4}
+            alt="Paella dish"
+          />
+          <CardContent sx={{ height: "25%" }}>
+            Everyone has their preferences, but no matter whether your go-to is
+            gin, tequila, or rye whiskey, the drinks listed here transcend
+            predilection.
+          </CardContent>
+        </Card>
       </Box>
       <Box sx={{ width: "90%", marginInline: "auto" }}>
         <Typography
