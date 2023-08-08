@@ -22,7 +22,7 @@ function Footer() {
         paddingTop: "50px",
         width: "90%",
         marginInline: "auto",
-        marginTop:"70px"
+        marginTop: "70px",
       }}
     >
       <Box
@@ -147,7 +147,7 @@ function Footer() {
         className="footer-section2"
       >
         <Box className="footer-copyright">
-          Copyright &#169; Food Blog | Created by Alina . Irfan . Hamid
+          Copyright &#169; Food Blog | Created by Alina
         </Box>
       </Box>
     </Box>
