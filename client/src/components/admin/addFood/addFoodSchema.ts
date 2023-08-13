@@ -13,6 +13,10 @@ const addFoodSchema = YUP.object().shape({
     .min(2, "Name Too Short!")
     // .max(500, "Name Too Long!")
     .required("*Required"),
+  ingredients: YUP.string()
+    .min(2, "Name Too Short!")
+    // .max(999, "Name Too Long!")
+    .required("*Required"),
   description: YUP.string()
     .min(2, "Name Too Short!")
     // .max(999, "Name Too Long!")

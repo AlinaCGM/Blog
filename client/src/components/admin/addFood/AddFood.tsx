@@ -12,6 +12,7 @@ type InitialType = {
   title: string;
   image: string;
   category: string;
+  ingredients: string;
   description: string;
 };
 
@@ -37,6 +38,7 @@ const AddFood = () => {
     title: "",
     category: "",
     image: "",
+    ingredients: "",
     description: "",
   };
 
@@ -44,6 +46,7 @@ const AddFood = () => {
   const token = localStorage.getItem("token");
 
   const submitHandler = (values: InitialType, { resetForm }: any) => {
+    console.log(values.ingredients, "values.ingredients");
     axios
       .post(`${url}/food`, values, {
         headers: { Authorization: `Bearer ${token}` },
@@ -109,6 +112,20 @@ const AddFood = () => {
               <div>
                 <TextField
                   className="add-form-text"
+                  label="Ingredients"
+                  name="ingredients"
+                  multiline
+                  rows={10}
+                  onChange={handleChange}
+                  value={values.ingredients}
+                />
+                {errors.ingredients && touched.ingredients ? (
+                  <div className="error-message">{errors.ingredients}</div>
+                ) : null}
+              </div>
+              <div>
+                <TextField
+                  className="add-form-text"
                   label="Description"
                   name="description"
                   multiline
@@ -124,7 +141,7 @@ const AddFood = () => {
               <div>
                 <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">
                   Add Recipe
-                </Button>
+                </Button>{" "}
               </div>
             </Form>
           );

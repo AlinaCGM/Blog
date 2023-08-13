@@ -29,18 +29,18 @@ import { commentActions } from "../../../redux/slice/comment";
 import { fetchCommentByFoodId } from "../../../redux/thunk/comment";
 
 import CommentItem from "../../comment/CommentItem";
-import foodDetailSchema from "./foodDetailSchema";
+import commentSchema from "./commentSchema";
 
 type PropType = {
   food: FoodType;
 };
 
-type InitialType = {
-  description: string;
+type CommentFormValues = {
+  commentText: string;
 };
 
-const initialValues: InitialType = {
-  description: "",
+const initialFormValues: CommentFormValues = {
+  commentText: "",
 };
 
 const FoodDetail = ({ food }: PropType) => {
@@ -110,7 +110,10 @@ const FoodDetail = ({ food }: PropType) => {
   };
   const token = localStorage.getItem("token");
 
-  const submitHandler = async (values: InitialType, { resetForm }: any) => {
+  const submitHandler = async (
+    values: CommentFormValues,
+    { resetForm }: any
+  ) => {
     if (!user || !token) {
       handleLoginAlertOpen();
       console.log("alert works");
@@ -118,7 +121,7 @@ const FoodDetail = ({ food }: PropType) => {
     }
     const userComment: UserCommentType = {
       userId: user._id,
-      message: values.description,
+      message: values.commentText,
     };
 
     try {
@@ -127,7 +130,7 @@ const FoodDetail = ({ food }: PropType) => {
       });
 
       if (res.status === 200) {
-        resetForm({ values: initialValues });
+        resetForm({ values: initialFormValues });
         dispatch(commentActions.addComment(res.data));
       }
     } catch (err) {
@@ -165,13 +168,21 @@ const FoodDetail = ({ food }: PropType) => {
           <Box className="food-title">
             <h1>{food.title}</h1>
             <h3>{food.category}</h3>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ maxWidth: 800, lineHeight: 2 }}
-            >
-              {food.description}
-            </Typography>
+            {food.ingredients.split("\n").map((ingredient, index) => (
+              <Typography
+                key={index}
+                textAlign="left"
+                variant="body2"
+                component="li"
+              >
+                {ingredient.trim()}
+              </Typography>
+            ))}
+            {food.description.split("\n").map((description, index) => (
+              <Typography textAlign={"justify"} key={index}>
+                {description.trim()}
+              </Typography>
+            ))}
 
             <Link to="/all-recipes">
               <IconButton sx={{ mt: 2 }}>
@@ -196,8 +207,8 @@ const FoodDetail = ({ food }: PropType) => {
 
       <Box className="food-txtfields">
         <Formik
-          initialValues={initialValues}
-          validationSchema={foodDetailSchema}
+          initialValues={initialFormValues}
+          validationSchema={commentSchema}
           onSubmit={submitHandler}
         >
           {({ values, errors, touched, handleChange }) => {
@@ -214,14 +225,14 @@ const FoodDetail = ({ food }: PropType) => {
                   }}
                   className="textBox"
                   label="Leave a comment"
-                  name="description"
+                  name="commentText"
                   multiline
                   rows={10}
                   onChange={handleChange}
-                  value={values.description}
+                  value={values.commentText}
                 />
-                {errors.description && touched.description ? (
-                  <div className="error-message">{errors.description}</div>
+                {errors.commentText && touched.commentText ? (
+                  <div className="error-message">{errors.commentText}</div>
                 ) : null}
                 <Box>
                   <Button

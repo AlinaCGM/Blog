@@ -14,6 +14,7 @@ type InitialValues = {
   title: string;
   category: string;
   image: string;
+  ingredients: string;
   description: string;
 };
 
@@ -28,6 +29,7 @@ const UpdateFood = ({ foodToUpdate, setOpenModal }: PropType) => {
     title: "",
     category: "",
     image: "",
+    ingredients: "",
     description: "",
   };
 
@@ -90,6 +92,20 @@ const UpdateFood = ({ foodToUpdate, setOpenModal }: PropType) => {
                 />
                 {errors.image && touched.image ? (
                   <div className="error-message">{errors.image}</div>
+                ) : null}
+              </div>
+              <div>
+                <TextField
+                  className="update-food-text"
+                  label="Ingredients"
+                  name="ingredients"
+                  multiline
+                  rows={10}
+                  onChange={handleChange}
+                  defaultValue={foodToUpdate?.ingredients}
+                />
+                {errors.ingredients && touched.ingredients ? (
+                  <div className="error-message">{errors.ingredients}</div>
                 ) : null}
               </div>
               <div>

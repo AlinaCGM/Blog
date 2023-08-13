@@ -90,6 +90,9 @@ const FoodInformation = () => {
                 <b>Description</b>
               </TableCell>
               <TableCell>
+                <b>Ingredients</b>
+              </TableCell>
+              <TableCell>
                 <b>Action</b>
               </TableCell>
               <TableCell />
@@ -109,7 +112,14 @@ const FoodInformation = () => {
                   </TableCell>
                   <TableCell>{food.title}</TableCell>
                   <TableCell>{food.category}</TableCell>
-                  <TableCell>{food.description.slice(0, 150)} ...</TableCell>
+
+                  {food.description && (
+                    <TableCell>{food.description.slice(0, 150)} ...</TableCell>
+                  )}
+                  {food.ingredients && (
+                    <TableCell>{food.ingredients.slice(0, 150)}...</TableCell>
+                  )}
+
                   <TableCell>
                     <IconButton onClick={() => updateFood(food._id)}>
                       <EditIcon />

@@ -1,6 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
 import { styled } from "@mui/material/styles";
-import { Rating, Button, IconButton, Snackbar, Alert } from "@mui/material";
+import {
+  Rating,
+  Button,
+  IconButton,
+  Snackbar,
+  Alert,
+  Typography,
+} from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -142,7 +149,9 @@ const FoodItem = ({ food }: PropType) => {
           </IconButton>
         </div>
       </FoodItemRateFav>
-      <p>{food.description.slice(0, 100)}...</p>
+      <Typography>{(food.ingredients ?? "").slice(0, 150)}</Typography>
+      <Typography>{(food.description ?? "").slice(0, 150)} ...</Typography>
+
       <Link to={`/food/${food._id}`}>
         <Button></Button>
       </Link>

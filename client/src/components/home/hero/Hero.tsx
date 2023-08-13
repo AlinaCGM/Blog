@@ -6,7 +6,11 @@ import im1 from "../../../assets/meat.jpg";
 import im2 from "../../../assets/vegi.jpg";
 import im3 from "../../../assets/dessert.jpg";
 import im4 from "../../../assets/drinks.jpg";
-import pepper from "../../../assets/pepper.png";
+import im5 from "../../../assets/veg.jpg";
+import im6 from "../../../assets/cocktail.jpg";
+import im7 from "../../../assets/pancake.jpg";
+import im8 from "../../../assets/bocal.jpg";
+import pepper from "../../../assets/pepper1.jpg";
 
 const Hero = () => {
   return (
@@ -115,7 +119,7 @@ const Hero = () => {
         <Card
           sx={{
             width: {
-              sx: "80%",
+              xs: "80%",
               sm: "40%",
               md: "20%",
             },
@@ -136,7 +140,7 @@ const Hero = () => {
         <Card
           sx={{
             width: {
-              sx: "80%",
+              xs: "80%",
               sm: "40%",
               md: "20%",
             },
@@ -157,7 +161,7 @@ const Hero = () => {
         <Card
           sx={{
             width: {
-              sx: "80%",
+              xs: "80%",
               sm: "40%",
               md: "20%",
             },
@@ -179,7 +183,7 @@ const Hero = () => {
         <Card
           sx={{
             width: {
-              sx: "80%",
+              xs: "80%",
               sm: "40%",
               md: "20%",
             },
@@ -230,6 +234,178 @@ const Hero = () => {
           recipes we want you to say, “How was it that simple but still tastes
           that good?!”
         </Typography>
+      </Box>
+      {/* daily menu box */}
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: 5,
+          marginBottom: "50px",
+          marginInline: "auto",
+        }}
+      >
+        {/* first card */}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-around",
+            marginInline: "auto",
+            width: {
+              xs: "90%",
+              sm: "90%",
+              lg: "45%",
+            },
+            flexWrap: {
+              xs: "wrap",
+              sm: "noWrap",
+            },
+            borderBottom: {
+              xs: "1px solid grey",
+              sm: "none",
+            },
+            borderRight: {
+              xs: "none",
+              lg: "1px solid grey",
+            },
+          }}
+        >
+          <CardMedia
+            sx={{
+              width: {
+                sm: "40%",
+                md: "50%",
+              },
+            }}
+            component="img"
+            image={im6}
+            alt="Paella dish"
+          />
+          <Typography sx={{ paddingInline: "5px" }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+            scelerisque felis sapien, et euismod dolor tincidunt vitae. Praesent
+            porttitor, nunc nec feugiat rutrum, ligula ante volutpat lorem,
+            sagittis pellentesque risus nibh vestibulum augue. Aenean id porta
+            felis, a faucibus mauris. Etiam ultricies, orci eget interdum
+            elementum, metus ante gravida enim, ac dignissim mauris nisl non
+            nunc. Aliquam ac suscipit erat. Ut ut risus ante.
+          </Typography>
+        </Box>
+        {/* second card */}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-around",
+            marginInline: "auto",
+            width: {
+              xs: "90%",
+              sm: "90%",
+              lg: "45%",
+            },
+            flexWrap: {
+              xs: "wrap",
+              sm: "noWrap",
+            },
+          }}
+        >
+          <CardMedia
+            sx={{
+              width: {
+                sm: "40%",
+                md: "50%",
+              },
+            }}
+            component="img"
+            image={im5}
+            alt="Paella dish"
+          />
+          <Typography sx={{ paddingInline: "5px" }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+            scelerisque felis sapien, et euismod dolor tincidunt vitae. Praesent
+            porttitor, nunc nec feugiat rutrum, ligula ante volutpat lorem,
+            sagittis pellentesque risus nibh vestibulum augue. Aenean id porta
+            felis, a faucibus mauris. Etiam ultricies, orci eget interdum
+            elementum, metus ante gravida enim, ac dignissim mauris nisl non
+            nunc. Aliquam ac suscipit erat. Ut ut risus ante.
+          </Typography>
+        </Box>
+        {/* third card */}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-around",
+            marginInline: "auto",
+            width: {
+              xs: "90%",
+              sm: "90%",
+              lg: "45%",
+            },
+            flexWrap: {
+              xs: "wrap",
+              sm: "noWrap",
+            },
+          }}
+        >
+          <CardMedia
+            sx={{
+              width: {
+                sm: "40%",
+                md: "50%",
+              },
+            }}
+            component="img"
+            image={im7}
+            alt="Paella dish"
+          />
+          <Typography sx={{ paddingInline: "5px" }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+            scelerisque felis sapien, et euismod dolor tincidunt vitae. Praesent
+            porttitor, nunc nec feugiat rutrum, ligula ante volutpat lorem,
+            sagittis pellentesque risus nibh vestibulum augue. Aenean id porta
+            felis, a faucibus mauris. Etiam ultricies, orci eget interdum
+            elementum, metus ante gravida enim, ac dignissim mauris nisl non
+            nunc. Aliquam ac suscipit erat. Ut ut risus ante.
+          </Typography>
+        </Box>
+        {/* fourth card */}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-around",
+            marginInline: "auto",
+            width: {
+              xs: "90%",
+              sm: "90%",
+              lg: "45%",
+            },
+            flexWrap: {
+              xs: "wrap",
+              sm: "noWrap",
+            },
+          }}
+        >
+          <CardMedia
+            sx={{
+              width: {
+                sm: "40%",
+                md: "50%",
+              },
+            }}
+            component="img"
+            image={im8}
+            alt="Paella dish"
+          />
+          <Typography sx={{ paddingInline: "5px" }}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+            scelerisque felis sapien, et euismod dolor tincidunt vitae. Praesent
+            porttitor, nunc nec feugiat rutrum, ligula ante volutpat lorem,
+            sagittis pellentesque risus nibh vestibulum augue. Aenean id porta
+            felis, a faucibus mauris. Etiam ultricies, orci eget interdum
+            elementum, metus ante gravida enim, ac dignissim mauris nisl non
+            nunc. Aliquam ac suscipit erat. Ut ut risus ante.
+          </Typography>
+        </Box>
       </Box>
       <Box>
         <CardMedia
