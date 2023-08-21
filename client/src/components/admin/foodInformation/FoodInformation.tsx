@@ -29,13 +29,13 @@ const FoodInformation = () => {
   const [openModal, setOpenModal] = useState(false);
   const [foodToModal, setFoodToModal] = useState<FoodType>();
 
-  // useEffect(() => {
-  //   dispatch(fetchFoodData());
-  // }, [dispatch, foodList]);
-
   useEffect(() => {
     dispatch(fetchFoodData());
-  }, [dispatch]);
+  }, [dispatch, foodList]);
+
+  // useEffect(() => {
+  //   dispatch(fetchFoodData());
+  // }, [dispatch]);
 
   const handleClick = () => {
     setOpen(true);
