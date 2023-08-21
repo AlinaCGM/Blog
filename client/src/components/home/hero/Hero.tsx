@@ -204,32 +204,32 @@ const Hero = () => {
       </Box>
       <Box sx={{ width: "90%", marginInline: "auto" }}>
         <Typography
-          sx={{
-            marginBlock: {
-              xs: "18px",
-              sm: "30px",
-              md: "36px",
-              lg: "50px",
-            },
-            lineHeight: {
-              xs: "18px",
-              sm: "20px",
-              md: "26px",
-              lg: "32px",
-            },
-            textAlign: "justify",
+        // sx={{
+        //   marginBlock: {
+        //     xs: "18px",
+        //     sm: "30px",
+        //     md: "36px",
+        //     lg: "50px",
+        //   },
+        //   lineHeight: {
+        //     xs: "18px",
+        //     sm: "20px",
+        //     md: "26px",
+        //     lg: "32px",
+        //   },
+        //   textAlign: "justify",
 
-            fontSize: {
-              xs: "14px",
-              sm: "20px",
-              md: "22px",
-              lg: "28px",
-            },
-            fontFamily: " Josefin Sans",
-          }}
+        //   fontSize: {
+        //     xs: "14px",
+        //     sm: "20px",
+        //     md: "22px",
+        //     lg: "28px",
+        //   },
+        //   fontFamily: " Josefin Sans",
+        // }}
         >
-          Expect new recipes weekly, with a mix of savory and sweet including{" "}
-          <em>desserts, breakfasts, entrées, sides, snacks,</em> and more{" "}
+          Expect new recipes weekly, with a mix of savory and sweet including
+          desserts, breakfasts, entrées, sides, snacks, and more
           <Link to="/all-recipes"> here .</Link> When you make one of our
           recipes we want you to say, “How was it that simple but still tastes
           that good?!”
@@ -414,10 +414,10 @@ const Hero = () => {
           alt="Paella dish"
           sx={{
             height: {
-              xs: "70px",
-              sm: "120px",
-              md: "180px",
-              lg: "280px",
+              xs: "150px",
+              sm: "200px",
+              md: "250px",
+              lg: "380px",
             },
           }}
         />

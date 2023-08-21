@@ -3,7 +3,7 @@ import Stack from "@mui/material/Stack";
 import SnackbarContent from "@mui/material/SnackbarContent";
 import Button from "@mui/material/Button";
 import { CommentType } from "../../types/commentType";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 // Styled SnackbarContent with transparent background and grey borders
 const StyledSnackbarContent = styled(SnackbarContent)(({ theme }) => ({
@@ -23,7 +23,7 @@ const CommentItem = ({ comment }: PropType) => {
 
   const action = (
     <Button color="secondary" size="small">
-      {comment.rate}
+      {comment.userId}
     </Button>
   );
 

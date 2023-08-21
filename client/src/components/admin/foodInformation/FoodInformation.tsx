@@ -29,9 +29,13 @@ const FoodInformation = () => {
   const [openModal, setOpenModal] = useState(false);
   const [foodToModal, setFoodToModal] = useState<FoodType>();
 
+  // useEffect(() => {
+  //   dispatch(fetchFoodData());
+  // }, [dispatch, foodList]);
+
   useEffect(() => {
     dispatch(fetchFoodData());
-  }, [dispatch, foodList]);
+  }, [dispatch]);
 
   const handleClick = () => {
     setOpen(true);
@@ -116,8 +120,9 @@ const FoodInformation = () => {
                   {food.description && (
                     <TableCell>{food.description.slice(0, 150)} ...</TableCell>
                   )}
+
                   {food.ingredients && (
-                    <TableCell>{food.ingredients.slice(0, 150)}...</TableCell>
+                    <TableCell>{food.ingredients.slice(0, 150)} ...</TableCell>
                   )}
 
                   <TableCell>

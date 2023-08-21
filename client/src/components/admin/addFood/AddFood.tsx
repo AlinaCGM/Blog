@@ -46,7 +46,6 @@ const AddFood = () => {
   const token = localStorage.getItem("token");
 
   const submitHandler = (values: InitialType, { resetForm }: any) => {
-    console.log(values.ingredients, "values.ingredients");
     axios
       .post(`${url}/food`, values, {
         headers: { Authorization: `Bearer ${token}` },
@@ -56,8 +55,10 @@ const AddFood = () => {
         if (res.status === 200) {
           handleClick();
           resetForm({ values: initialValues });
+          setOpen(false);
         }
       });
+    console.log(values, "values.ingredients at the end");
   };
 
   return (

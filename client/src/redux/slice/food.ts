@@ -17,7 +17,7 @@ const initialState: InitialType = {
     image: "",
     status: true,
     rate: 5,
-  },
+  }, 
 };
 
 const foodSlice = createSlice({

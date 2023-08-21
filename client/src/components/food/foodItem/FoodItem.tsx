@@ -149,7 +149,7 @@ const FoodItem = ({ food }: PropType) => {
           </IconButton>
         </div>
       </FoodItemRateFav>
-      <Typography>{(food.ingredients ?? "").slice(0, 150)}</Typography>
+      <Typography>{(food.ingredients ?? "").slice(0, 150)} ...</Typography>
       <Typography>{(food.description ?? "").slice(0, 150)} ...</Typography>
 
       <Link to={`/food/${food._id}`}>

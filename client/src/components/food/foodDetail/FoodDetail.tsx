@@ -119,6 +119,7 @@ const FoodDetail = ({ food }: PropType) => {
       console.log("alert works");
       return;
     }
+    console.log("Submit handler called");
     const userComment: UserCommentType = {
       userId: user._id,
       message: values.commentText,
@@ -132,6 +133,7 @@ const FoodDetail = ({ food }: PropType) => {
       if (res.status === 200) {
         resetForm({ values: initialFormValues });
         dispatch(commentActions.addComment(res.data));
+        console.log(res.data, "res.data comments");
       }
     } catch (err) {
       console.error(err);
@@ -168,7 +170,7 @@ const FoodDetail = ({ food }: PropType) => {
           <Box className="food-title">
             <h1>{food.title}</h1>
             <h3>{food.category}</h3>
-            {food.ingredients.split("\n").map((ingredient, index) => (
+            {/* {food.ingredients.split("\n").map((ingredient, index) => (
               <Typography
                 key={index}
                 textAlign="left"
@@ -177,13 +179,14 @@ const FoodDetail = ({ food }: PropType) => {
               >
                 {ingredient.trim()}
               </Typography>
-            ))}
-            {food.description.split("\n").map((description, index) => (
+            ))} */}
+            <Typography>{food.ingredients}</Typography>
+            {/* {food.description.split("\n").map((description, index) => (
               <Typography textAlign={"justify"} key={index}>
                 {description.trim()}
               </Typography>
-            ))}
-
+            ))} */}
+            <Typography>{food.description}</Typography>
             <Link to="/all-recipes">
               <IconButton sx={{ mt: 2 }}>
                 <ArrowBackIcon />
