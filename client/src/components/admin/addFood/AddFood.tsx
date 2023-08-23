@@ -36,8 +36,8 @@ const AddFood = () => {
   // Initial Values
   const initialValues: InitialType = {
     title: "",
-    category: "",
     image: "",
+    category: "",
     ingredients: "",
     description: "",
   };
