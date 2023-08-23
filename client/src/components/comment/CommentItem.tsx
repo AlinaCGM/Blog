@@ -23,7 +23,7 @@ const CommentItem = ({ comment }: PropType) => {
 
   const action = (
     <Button color="secondary" size="small">
-      {comment.userId}
+      {comment.rate}
     </Button>
   );
 

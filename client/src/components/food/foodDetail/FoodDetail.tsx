@@ -154,39 +154,42 @@ const FoodDetail = ({ food }: PropType) => {
           marginInline: "auto",
         }}
       >
-        <Box>
-          <Card sx={{ maxWidth: "500px" }}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                // height="cover"
-                image={food.image}
-                alt={food.title}
-              />
-            </CardActionArea>
-          </Card>
-        </Box>
-        <Box sx={{ paddingInline: "20px" }}>
+        <Box
+          sx={{
+            paddingInline: "20px",
+          }}
+        >
           <Box className="food-title">
             <h1>{food.title}</h1>
             <h3>{food.category}</h3>
-            {/* {food.ingredients.split("\n").map((ingredient, index) => (
-              <Typography
-                key={index}
-                textAlign="left"
-                variant="body2"
-                component="li"
-              >
-                {ingredient.trim()}
-              </Typography>
-            ))} */}
-            <Typography>{food.ingredients}</Typography>
-            {/* {food.description.split("\n").map((description, index) => (
-              <Typography textAlign={"justify"} key={index}>
-                {description.trim()}
-              </Typography>
-            ))} */}
-            <Typography>{food.description}</Typography>
+            <Card sx={{ maxWidth: "100%", padding: "20px" }}>
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  // height="cover"
+                  image={food.image}
+                  alt={food.title}
+                />
+              </CardActionArea>
+
+              {food.ingredients.split("\n").map((ingredient, index) => (
+                <Typography
+                  key={index}
+                  textAlign="justify"
+                  variant="body2"
+                  component="li"
+                  sx={{ marginBlock: "10px" }}
+                >
+                  {ingredient.trim()}
+                </Typography>
+              ))}
+
+              {food.description.split("\n").map((description, index) => (
+                <Typography textAlign={"justify"} key={index}>
+                  {description.trim()}
+                </Typography>
+              ))}
+            </Card>
             <Link to="/all-recipes">
               <IconButton sx={{ mt: 2 }}>
                 <ArrowBackIcon />

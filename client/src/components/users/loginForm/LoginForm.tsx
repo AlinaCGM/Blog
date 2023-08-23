@@ -28,7 +28,7 @@ const LoginForm = () => {
   const isLogin = useSelector((state: RootState) => state.user.isLogin);
   const error = useSelector((state: RootState) => state.user.error);
   const navigate = useNavigate();
-  
+
   const showPassHandler = () => {
     setShowPass(!showPass);
   };
@@ -60,12 +60,12 @@ const LoginForm = () => {
       .then((data) => {
         console.log(data, "data");
         if (data.message === "invalid") {
-          dispatch(userActions.errorHandler("This email is not registerd!"));
-          handleClick()
+          dispatch(userActions.errorHandler("This email is not registered!"));
+          handleClick();
           return;
         } else if (data.message === "wrong password!") {
           dispatch(userActions.errorHandler("Email or password is wrong!"));
-          handleClick()
+          handleClick();
           return;
         } else {
           dispatch(userActions.getUser(data.userData));

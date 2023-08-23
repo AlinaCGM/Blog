@@ -149,8 +149,10 @@ const FoodItem = ({ food }: PropType) => {
           </IconButton>
         </div>
       </FoodItemRateFav>
-      <Typography>{(food.ingredients ?? "").slice(0, 150)} ...</Typography>
-      <Typography>{(food.description ?? "").slice(0, 150)} ...</Typography>
+      <Typography sx={{ marginBlock: "10px" }}>
+        {(food.ingredients ?? "").slice(0, 20)} ...
+      </Typography>
+      <Typography>{(food.description ?? "").slice(0, 50)} ...</Typography>
 
       <Link to={`/food/${food._id}`}>
         <Button></Button>
