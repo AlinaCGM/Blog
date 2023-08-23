@@ -273,14 +273,12 @@ const FoodDetail = ({ food }: PropType) => {
 
       <Container>
         <Box>
-          <Typography>
-            {Array.isArray(comments) &&
-              comments
-                .filter((comment) => comment.foodId === food._id)
-                .map((comment) => {
-                  return <CommentItem key={comment._id} comment={comment} />;
-                })}
-          </Typography>
+          {Array.isArray(comments) &&
+            comments
+              .filter((comment) => comment.foodId === food._id)
+              .map((comment) => {
+                return <CommentItem key={comment._id} comment={comment} />;
+              })}
         </Box>
       </Container>
     </Box>

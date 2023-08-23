@@ -39,7 +39,7 @@ const FoodInformation = () => {
 
   const handleClick = () => {
     setOpen(true);
-  };
+  }; 
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
