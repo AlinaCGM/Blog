@@ -4,12 +4,12 @@ import { UserDocument } from "../models/User";
 const adminCheck = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const user = req.user as UserDocument;
-    // console.log(req,'request');
+
     if (user.isAdmin === true) {
       next();
       return true;
     } else {
-      res.json({ message: "you dont have access!" });
+      res.json({ message: "you don't have access!" });
       return false;
     }
   } catch (error) {

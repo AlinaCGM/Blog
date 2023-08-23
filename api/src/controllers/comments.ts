@@ -53,7 +53,7 @@ export const createCommentController = async (req: Request, res: Response) => {
     const { userId, message } = req.body;
     const newComment = new Comment({
       userId: userId,
-      foodId: req.params.foodId,
+      foodId: req.params.foodId, 
       message: message,
     });
 

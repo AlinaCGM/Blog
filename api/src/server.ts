@@ -17,4 +17,4 @@ mongoose
     );
     process.exit(1);
   });
-console.log(process.env);
+// console.log(process.env);

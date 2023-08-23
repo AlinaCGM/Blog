@@ -8,6 +8,8 @@ import {
   deleteFoodByIdController,
   updateFoodByIdController,
   getFoodByIdController,
+  addRateToFoodController,
+  getRateByFoodIdController,
 } from "../controllers/food";
 
 const foodRouter = Router();
@@ -17,25 +19,31 @@ foodRouter.get("/", getFoodListController);
 foodRouter.get("/:id", getFoodByIdController);
 foodRouter.post(
   "/",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: true }),
   AdminCheck,
   createFoodController
 );
 foodRouter.post(
+  "/addRate/:foodId",
+  passport.authenticate("jwt", { session: true }),
+  addRateToFoodController
+);
+foodRouter.get("/getRate/:foodId", getRateByFoodIdController);
+foodRouter.post(
   "/",
-  passport.authenticate("google-id-token", { session: false }),
+  passport.authenticate("google-id-token", { session: true }),
   AdminCheck,
   createFoodController
 );
 foodRouter.delete(
   "/:id",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: true }),
   AdminCheck,
   deleteFoodByIdController
 );
 foodRouter.put(
   "/:id",
-  passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: true }),
   AdminCheck,
   updateFoodByIdController
 );

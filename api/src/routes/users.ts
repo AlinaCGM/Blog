@@ -36,11 +36,7 @@ userRouter.put(
   passport.authenticate("google-id-token", { session: false }),
   updateUserByIdController
 );
-userRouter.post(
-  "/googleLogIn",
-  passport.authenticate("google-id-token", { session: false }),
-  googleAuthenticate
-);
+userRouter.post("/googleLogIn", googleAuthenticate);
 userRouter.post("/logIn", logInWithPassword);
 
 export default userRouter;

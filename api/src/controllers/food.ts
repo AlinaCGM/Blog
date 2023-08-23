@@ -15,6 +15,75 @@ export const getFoodListController = async (req: Request, res: Response) => {
   }
 };
 
+export const updateIngredientsController = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const { foodId, ingredients } = req.body;
+
+    // Update the ingredients field using findOneAndUpdate
+    const updatedFoodItem = await Food.findOneAndUpdate(
+      { _id: foodId },
+      { ingredients: ingredients },
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedFoodItem) {
+      return res.status(404).json({ error: "Food item not found" });
+    }
+
+    res.json(updatedFoodItem);
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: "An unknown error occurred" });
+    }
+  }
+};
+
+export const addRateToFoodController = async (req: Request, res: Response) => {
+  try {
+    const { foodId, rate } = req.body;
+
+    const updatedFoodItem = await FoodServices.addRateToFood(foodId, rate);
+    if (!updatedFoodItem) {
+      return res.status(404).json({ error: "Food item not found." });
+    }
+
+    res.json(updatedFoodItem);
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: "An unknown error occurred." });
+    }
+  }
+};
+
+export const getRateByFoodIdController = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const { foodId } = req.params;
+
+    const rate = await FoodServices.getRateByFoodId(foodId);
+    if (rate === null) {
+      return res.status(404).json({ error: "Food item not found." });
+    }
+
+    res.json({ rate });
+  } catch (error) {
+    if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: "An unknown error occurred." });
+    }
+  }
+};
+
 export const getFoodByIdController = async (req: Request, res: Response) => {
   try {
     const foundFood = await FoodServices.getFoodById(req.params.id);
@@ -24,51 +93,30 @@ export const getFoodByIdController = async (req: Request, res: Response) => {
   }
 };
 
-//2: Post Controller
-// export const createFoodController = async (req: Request, res: Response) => {
-//   try {
-//     // We'll get food here from FrontEnd | Client
-//     const { title, description, image, category } = req.body;
-
-//     const newFoodItem = new Food({
-//       title: title,
-//       description: description,
-//       image: image,
-//       category: category,
-//     });
-
-//     // New food item save in DB via services
-//     const foodItem = await FoodServices.createFood(newFoodItem);
-
-//     // Response back to Frontend
-//     res.json(foodItem);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 export const createFoodController = async (req: Request, res: Response) => {
   try {
-    const { title, description, image } = req.body;
-    let { category } = req.body;
-
-    // if no category provided, set the default value
-    if (!category) {
-      category = "tasty";
-    }
+    console.log(req.body, "Data received from client");
+    const { title, ingredients, description, image, category } = req.body;
 
     // create a new Mongoose document
     const newFoodItem = new Food({
       title: title,
+      ingredients: ingredients,
       description: description,
       image: image,
       category: category,
     });
 
-    const foodItem = await FoodServices.createFood(newFoodItem);
+    console.log(newFoodItem);
 
+    const foodItem = await FoodServices.createFood(newFoodItem);
     res.json(foodItem);
   } catch (error) {
-    console.log(error);
+    if (error instanceof Error) {
+      res.status(500).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: "An unknown error occurred" });
+    }
   }
 };
 

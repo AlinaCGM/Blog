@@ -41,7 +41,7 @@ export const createUserController = async (req: Request, res: Response) => {
     //hash password
     const saltRounds = await bcrypt.genSalt(10); //complexity of the password
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-    console.log(hashedPassword);
+
     const newUser = new User({
       firstName: firstName,
       lastName: lastName,
@@ -115,7 +115,7 @@ interface AuthenticatedRequest extends Request {
 export const googleAuthenticate = async (req: Request, res: Response) => {
   try {
     // access the data from passport :done (null, user)
-    console.log(req, "request");
+    // console.log(req, "request");
     const userData = req.user as UserDocument;
     if (!userData) {
       res.json({ message: "Can't find user with the email!" });

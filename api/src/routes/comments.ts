@@ -18,7 +18,7 @@ commentRouter.get(
   getCommentsByUserIdController
 );
 
-commentRouter.get("/food/:foodId", getCommentsByFoodIdController);
+commentRouter.get("/:foodId", getCommentsByFoodIdController);
 
 commentRouter.get(
   "/",
@@ -29,6 +29,11 @@ commentRouter.get(
 commentRouter.post(
   "/:foodId",
   passport.authenticate("jwt", { session: false }),
+  createCommentController
+);
+commentRouter.post(
+  "/:foodId",
+  passport.authenticate("google-id-token", { session: false }),
   createCommentController
 );
 commentRouter.delete(
