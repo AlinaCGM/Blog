@@ -45,22 +45,45 @@ const AddFood = () => {
   // Function Call on Submit
   const token = localStorage.getItem("token");
 
+  // const submitHandler = (values: InitialType, { resetForm }: any) => {
+  //   axios
+  //     .post(`${url}/food`, values, {
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     })
+  //     .then((res) => {
+  //       console.log(res.data, "data from AddFood.tsx");
+  //       if (res.status === 200) {
+  //         handleClick();
+  //         resetForm({ values: initialValues });
+  //         setOpen(false);
+  //       }
+  //     });
+  //   console.log(values, "values.ingredients at the end");
+  // };
+
   const submitHandler = (values: InitialType, { resetForm }: any) => {
+    const dataToSend = {
+      ...values,
+      ingredients: values.ingredients, // Include ingredients field
+    };
+
     axios
-      .post(`${url}/food`, values, {
+      .post(`${url}/food`, dataToSend, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        console.log(res.data, "data");
+        console.log(dataToSend, "data sent to server"); // Log the data sent to the server
+        console.log(res.data, "data from AddFood.tsx");
         if (res.status === 200) {
           handleClick();
           resetForm({ values: initialValues });
           setOpen(false);
         }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
-    console.log(values, "values.ingredients at the end");
   };
-
   return (
     <div className="add-food-container">
       <div>

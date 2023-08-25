@@ -11,8 +11,10 @@ import {
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { url } from "../../../App";
 
 import { favoriteActions } from "../../../redux/slice/favorite";
+import { foodActions } from "../../../redux/slice/food";
 import { FoodType } from "../../../types/foodType";
 import { RootState } from "../../../redux/store";
 
@@ -79,13 +81,53 @@ type PropType = {
 };
 
 const FoodItem = ({ food }: PropType) => {
+  const [userRate, setUserRate] = useState<number>(food.rate);
+  const [isSavingRate, setIsSavingRate] = useState(false);
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const favState = useSelector((state: RootState) => state.favorite.favorites);
+  const foodItem = useSelector((state: RootState) => state.food.food);
   const alert = useSelector((state: RootState) => state.favorite.alert);
 
   const handleClick = () => {
     setOpen(true);
+  };
+  const handleRateChange = (
+    event: React.ChangeEvent<{}>,
+    newValue: number | null
+  ) => {
+    if (newValue !== null) {
+      setUserRate(newValue);
+    }
+  };
+
+  const submitRate = async () => {
+    if (userRate !== 0) { 
+      setIsSavingRate(true);
+      try {
+        // Perform POST request to add rate to the backend (MongoDB)
+        const response = await fetch(`${url}/addRate/${food._id}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",  
+          },
+          body: JSON.stringify({ rate: userRate }), // Send only the rate in the request body
+        });
+
+        if (response.ok) {
+          const updatedFood = await response.json();
+          dispatch(
+            foodActions.addRate({ foodId: food._id, rate: updatedFood.rate })
+          );
+          setIsSavingRate(false);
+        } else {
+          // Handle error if the request fails
+          console.error("Error adding rate.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
   };
 
   const handleClose = (
@@ -137,11 +179,13 @@ const FoodItem = ({ food }: PropType) => {
       <FoodItemRateFav>
         <div>
           <Rating
-            name="half-rating"
-            defaultValue={food.rate}
-            precision={0.5}
-            readOnly
+            name="simple-controlled"
+            value={userRate}
+            onChange={handleRateChange}
           />
+          <Button onClick={submitRate} disabled={isSavingRate}>
+            {isSavingRate ? "Saving..." : "Submit Rate"}
+          </Button>
         </div>
         <div>
           <IconButton onClick={favHandler}>

@@ -110,36 +110,53 @@ const FoodDetail = ({ food }: PropType) => {
   };
   const token = localStorage.getItem("token");
 
-  const submitHandler = async (
-    values: CommentFormValues,
-    { resetForm }: any
-  ) => {
-    if (!user || !token) {
-      handleLoginAlertOpen();
-      console.log("alert works");
-      return;
-    }
-    console.log("Submit handler called");
-    const userComment: UserCommentType = {
+  // const submitHandler = async (
+  //   values: CommentFormValues,
+  //   { resetForm }: any
+  // ) => {
+  //   if (!user || !token) {
+  //     handleLoginAlertOpen();
+  //     console.log("alert works");
+  //     return;
+  //   }
+  //   console.log("Submit handler called");
+  //   const userComment: UserCommentType = {
+  //     userId: user._id,
+  //     message: values.commentText,
+  //   };
+
+  //   try {
+  //     const res = await axios.post(`${url}/comments/${food._id}`, userComment, {
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     });
+
+  //     if (res.status === 200) {
+  //       resetForm({ values: initialFormValues });
+  //       dispatch(commentActions.getCommentByFoodId(res.data));
+  //       console.log(res.data, "res.data comments");
+  //     }
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+  const submitHandler = (values: CommentFormValues, { resetForm }: any) => {
+    const userComment = {
       userId: user._id,
       message: values.commentText,
     };
-
-    try {
-      const res = await axios.post(`${url}/comments/${food._id}`, userComment, {
+    console.log(userComment, "user comment");
+    axios
+      .post(`${url}/comments/${food._id}`, userComment, {
         headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          resetForm({ values: initialFormValues });
+          // dispatch(commentActions.getCommentByFoodId(res.data));
+          console.log(res.data, "res.data comments");
+        }
       });
-
-      if (res.status === 200) {
-        resetForm({ values: initialFormValues });
-        dispatch(commentActions.addComment(res.data));
-        console.log(res.data, "res.data comments");
-      }
-    } catch (err) {
-      console.error(err);
-    }
   };
-
   return (
     <Box>
       <Box
@@ -162,7 +179,10 @@ const FoodDetail = ({ food }: PropType) => {
           <Box className="food-title">
             <h1>{food.title}</h1>
             <h3>{food.category}</h3>
-            <Card sx={{ maxWidth: "100%", padding: "20px" }}>
+
+            <Card
+              sx={{ maxWidth: "60%", padding: "20px", marginInline: "auto" }}
+            >
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -171,25 +191,38 @@ const FoodDetail = ({ food }: PropType) => {
                   alt={food.title}
                 />
               </CardActionArea>
-
-              {food.ingredients.split("\n").map((ingredient, index) => (
-                <Typography
-                  key={index}
-                  textAlign="justify"
-                  variant="body2"
-                  component="li"
-                  sx={{ marginBlock: "10px" }}
-                >
-                  {ingredient.trim()}
-                </Typography>
-              ))}
-
-              {food.description.split("\n").map((description, index) => (
-                <Typography textAlign={"justify"} key={index}>
-                  {description.trim()}
-                </Typography>
-              ))}
             </Card>
+
+            {food.ingredients.split("\n").map((ingredient, index) => (
+              <Typography
+                key={index}
+                textAlign="justify"
+                variant="body2"
+                component="li"
+                sx={{
+                  marginBlock: "10px",
+                  width: "200px",
+                  marginInline: "auto",
+                }}
+              >
+                {ingredient.trim()}
+              </Typography>
+            ))}
+
+            {food.description.split("\n").map((description, index) => (
+              <Typography
+                textAlign="left"
+                sx={{
+                  marginBlock: "10px",
+                  width: "60%",
+                  marginInline: "auto",
+                }}
+                key={index}
+              >
+                {description.trim()}
+              </Typography>
+            ))}
+
             <Link to="/all-recipes">
               <IconButton sx={{ mt: 2 }}>
                 <ArrowBackIcon />

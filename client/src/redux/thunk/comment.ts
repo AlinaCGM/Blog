@@ -6,7 +6,7 @@ import axios from "axios";
 export function fetchCommentByFoodId(foodId: string) {
   return async (dispatch: AppDispatch) => {
     try {
-      const response = await axios.get(`${url}/comments/${foodId}`);
+      const response = await axios.get(`${url}/comments/get/${foodId}`);
       const data = await response.data;
       console.log(data, "comments in thunk");
       dispatch(commentActions.getCommentByFoodId(data));

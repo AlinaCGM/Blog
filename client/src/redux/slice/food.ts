@@ -16,8 +16,8 @@ const initialState: InitialType = {
     description: "",
     image: "",
     status: true,
-    rate: 5,
-  }, 
+    rate: 0,
+  },
 };
 
 const foodSlice = createSlice({
@@ -29,6 +29,13 @@ const foodSlice = createSlice({
     },
     getFoodDetail: (state, action) => {
       state.foodDetail = action.payload;
+    },
+    addRate: (state, action) => {
+      const { foodId, rate } = action.payload;
+      const foodItem = state.food.find((item) => item._id === foodId);
+      if (foodItem) {
+        foodItem.rate = rate;
+      }
     },
   },
 });
