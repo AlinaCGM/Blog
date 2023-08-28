@@ -131,6 +131,7 @@ const FoodDetail = ({ food }: PropType) => {
       });
 
       if (res.status === 200) {
+        dispatch(commentActions.addComment(res.data));
         resetForm({ values: initialFormValues });
         console.log(res.data, "res.data comments");
       }

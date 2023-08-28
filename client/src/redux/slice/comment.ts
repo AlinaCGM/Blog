@@ -22,7 +22,7 @@ const commentSlice = createSlice({
       state.allComments = action.payload;
     },
     addComment: (state, action) => {
-      state.comments.unshift(action.payload); // Add the comment to the state.comments array
+      state.comments.push(action.payload); // Add the comment to the state.comments array
     },
   },
 });
