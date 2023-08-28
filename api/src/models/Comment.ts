@@ -30,7 +30,7 @@ const CommentSchema = new mongoose.Schema({
   },
   rate: {
     type: Number,
-    default: 5,
+    default: 0,
   },
   isConfirmed: {
     type: Boolean,

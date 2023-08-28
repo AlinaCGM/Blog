@@ -5,7 +5,6 @@ import Button from "@mui/material/Button";
 import { CommentType } from "../../types/commentType";
 import { Box, Typography } from "@mui/material";
 
-// Styled SnackbarContent with transparent background and grey borders
 const StyledSnackbarContent = styled(SnackbarContent)(({ theme }) => ({
   backgroundColor: "transparent",
   border: `1px solid ${theme.palette.grey[300]}`,
@@ -19,7 +18,7 @@ type PropType = {
 };
 
 const CommentItem = ({ comment }: PropType) => {
-  console.log(comment, "userComment from CommentItem.ts");
+  // console.log(comment, "userComment from CommentItem.ts");
 
   const action = (
     <Button color="secondary" size="small">

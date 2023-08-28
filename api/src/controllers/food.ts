@@ -86,7 +86,7 @@ export const getRateByFoodIdController = async (
 
 export const getFoodByIdController = async (req: Request, res: Response) => {
   try {
-    const foundFood = await FoodServices.getFoodById(req.params.id);
+    const foundFood = await FoodServices.getFoodById(req.params.foodId);
     res.json(foundFood);
   } catch (error) {
     console.log(error);

@@ -51,9 +51,12 @@ export const createCommentController = async (req: Request, res: Response) => {
     // We'll get comment here from FrontEnd | Client
     // comment function|Collection|table import from Model
     const { userId, message } = req.body;
+    if (!userId) {
+      return res.status(401).json({ message: "Authentication required" });
+    }
     const newComment = new Comment({
       userId: userId,
-      foodId: req.params.foodId, 
+      foodId: req.params.foodId,
       message: message,
     });
 

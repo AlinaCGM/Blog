@@ -110,53 +110,35 @@ const FoodDetail = ({ food }: PropType) => {
   };
   const token = localStorage.getItem("token");
 
-  // const submitHandler = async (
-  //   values: CommentFormValues,
-  //   { resetForm }: any
-  // ) => {
-  //   if (!user || !token) {
-  //     handleLoginAlertOpen();
-  //     console.log("alert works");
-  //     return;
-  //   }
-  //   console.log("Submit handler called");
-  //   const userComment: UserCommentType = {
-  //     userId: user._id,
-  //     message: values.commentText,
-  //   };
-
-  //   try {
-  //     const res = await axios.post(`${url}/comments/${food._id}`, userComment, {
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     });
-
-  //     if (res.status === 200) {
-  //       resetForm({ values: initialFormValues });
-  //       dispatch(commentActions.getCommentByFoodId(res.data));
-  //       console.log(res.data, "res.data comments");
-  //     }
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-  const submitHandler = (values: CommentFormValues, { resetForm }: any) => {
-    const userComment = {
+  const submitHandler = async (
+    values: CommentFormValues,
+    { resetForm }: any
+  ) => {
+    if (!user || !token) {
+      handleLoginAlertOpen();
+      console.log("alert works");
+      return;
+    }
+    console.log("Submit handler called");
+    const userComment: UserCommentType = {
       userId: user._id,
       message: values.commentText,
     };
-    console.log(userComment, "user comment");
-    axios
-      .post(`${url}/comments/${food._id}`, userComment, {
+
+    try {
+      const res = await axios.post(`${url}/comments/${food._id}`, userComment, {
         headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => {
-        if (res.status === 200) {
-          resetForm({ values: initialFormValues });
-          // dispatch(commentActions.getCommentByFoodId(res.data));
-          console.log(res.data, "res.data comments");
-        }
       });
+
+      if (res.status === 200) {
+        resetForm({ values: initialFormValues });
+        console.log(res.data, "res.data comments");
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
+
   return (
     <Box>
       <Box

@@ -18,7 +18,7 @@ commentRouter.get(
   getCommentsByUserIdController
 );
 
-commentRouter.get("/:foodId", getCommentsByFoodIdController);
+commentRouter.get("/get/:foodId", getCommentsByFoodIdController);
 
 commentRouter.get(
   "/",

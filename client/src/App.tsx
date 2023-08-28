@@ -17,8 +17,8 @@ import FoodMng from "./pages/FoodMng";
 import UserMng from "./pages/UserMng";
 import CommentMng from "./pages/CommentMng";
 
-// export const url = "https://blog-api-t124.onrender.com";
-export const url = "http://localhost:8000";
+export const url = "https://blog-api-t124.onrender.com";
+// export const url = "http://localhost:8000";
 function App() {
   return (
     <Box className="App">

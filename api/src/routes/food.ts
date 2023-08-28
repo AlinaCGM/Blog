@@ -16,7 +16,7 @@ const foodRouter = Router();
 
 // Call Express Methods for food Collection by foodRouter
 foodRouter.get("/", getFoodListController);
-foodRouter.get("/:id", getFoodByIdController);
+foodRouter.get("/get/:foodId", getFoodByIdController);
 foodRouter.post(
   "/",
   passport.authenticate("jwt", { session: true }),
