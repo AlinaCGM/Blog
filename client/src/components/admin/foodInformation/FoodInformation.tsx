@@ -24,6 +24,7 @@ import { FoodType } from "../../../types/foodType";
 
 const FoodInformation = () => {
   const foodList = useSelector((state: RootState) => state.food.food);
+  console.log(foodList, "foodList from FoodInformation");
   const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -31,15 +32,11 @@ const FoodInformation = () => {
 
   useEffect(() => {
     dispatch(fetchFoodData());
-  }, [dispatch, foodList]);
-
-  // useEffect(() => {
-  //   dispatch(fetchFoodData());
-  // }, [dispatch]);
+  }, [dispatch]);
 
   const handleClick = () => {
     setOpen(true);
-  }; 
+  };
 
   const handleClose = (
     event?: React.SyntheticEvent | Event,
@@ -121,8 +118,10 @@ const FoodInformation = () => {
                     <TableCell>{food.description.slice(0, 150)} ...</TableCell>
                   )}
 
-                  {food.ingredients && (
-                    <TableCell>{food.ingredients.slice(0, 150)} ...</TableCell>
+                  {Array.isArray(food.ingredients) && (
+                    <TableCell>
+                      {food.ingredients.join(", ").slice(0, 150)} ...
+                    </TableCell>
                   )}
 
                   <TableCell>

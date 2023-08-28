@@ -176,7 +176,7 @@ const FoodDetail = ({ food }: PropType) => {
               </CardActionArea>
             </Card>
 
-            {food.ingredients.split("\n").map((ingredient, index) => (
+            {food.ingredients.map((ingredient, index) => (
               <Typography
                 key={index}
                 textAlign="justify"

@@ -12,7 +12,7 @@ const initialState: InitialType = {
     _id: "",
     title: "",
     category: "",
-    ingredients: "",
+    ingredients: [],
     description: "",
     image: "",
     status: true,

@@ -12,7 +12,7 @@ type InitialType = {
   title: string;
   image: string;
   category: string;
-  ingredients: string;
+  ingredients: string[];
   description: string;
 };
 
@@ -38,41 +38,23 @@ const AddFood = () => {
     title: "",
     image: "",
     category: "",
-    ingredients: "",
+    ingredients: [""],
     description: "",
   };
 
   // Function Call on Submit
   const token = localStorage.getItem("token");
 
-  // const submitHandler = (values: InitialType, { resetForm }: any) => {
-  //   axios
-  //     .post(`${url}/food`, values, {
-  //       headers: { Authorization: `Bearer ${token}` },
-  //     })
-  //     .then((res) => {
-  //       console.log(res.data, "data from AddFood.tsx");
-  //       if (res.status === 200) {
-  //         handleClick();
-  //         resetForm({ values: initialValues });
-  //         setOpen(false);
-  //       }
-  //     });
-  //   console.log(values, "values.ingredients at the end");
-  // };
-
   const submitHandler = (values: InitialType, { resetForm }: any) => {
-    const dataToSend = {
-      ...values,
-      ingredients: values.ingredients, // Include ingredients field
-    };
-
     axios
-      .post(`${url}/food`, dataToSend, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      .post(
+        `${url}/food`,
+        values,
+
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
       .then((res) => {
-        console.log(dataToSend, "data sent to server"); // Log the data sent to the server
+        console.log(values, "data sent to server"); // Log the data sent to the server
         console.log(res.data, "data from AddFood.tsx");
         if (res.status === 200) {
           handleClick();
@@ -84,6 +66,7 @@ const AddFood = () => {
         console.error("Error:", error);
       });
   };
+
   return (
     <div className="add-food-container">
       <div>
@@ -140,9 +123,23 @@ const AddFood = () => {
                   name="ingredients"
                   multiline
                   rows={10}
-                  onChange={handleChange}
-                  value={values.ingredients}
+                  onChange={(event) => {
+                    handleChange({
+                      target: {
+                        name: event.target.name,
+                        value: event.target.value
+                          .split("\n")
+                          .map((str) => str.trim()),
+                      },
+                    });
+                  }}
+                  value={
+                    Array.isArray(values.ingredients)
+                      ? values.ingredients.join("\n")
+                      : ""
+                  }
                 />
+
                 {errors.ingredients && touched.ingredients ? (
                   <div className="error-message">{errors.ingredients}</div>
                 ) : null}
