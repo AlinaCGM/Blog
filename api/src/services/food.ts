@@ -1,9 +1,13 @@
 import Food, { FoodDocument } from "../models/Food";
 
 export const createFood = async (food: FoodDocument): Promise<FoodDocument> => {
-  console.log(food, "Data before saving");
-
-  return food.save();
+  try {
+    console.log(food, "Data before saving");
+    return await food.save();
+  } catch (error) {
+    console.error("Error saving food:", error);
+    throw error;
+  }
 };
 
 export const addRateToFood = async (

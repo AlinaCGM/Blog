@@ -8,7 +8,7 @@ export type FoodDocument = Document & {
   status: boolean;
   DOB: Date;
   rate: number;
-  ingredients: string;
+  ingredients: [String];
 };
 
 const FoodSchema = new mongoose.Schema({
@@ -43,31 +43,11 @@ const FoodSchema = new mongoose.Schema({
     default: 0,
   },
   ingredients: {
-    type: String,
+    type: [String],
     required: true,
   },
 });
 
-// export default mongoose.model<FoodDocument>("Food", FoodSchema);
-
-const Food = mongoose.model<FoodDocument>("Food", FoodSchema); // Import your Food model
-
-// const updateDocuments = async () => {
-//   try {
-//     const documents = await Food.find();
-
-//     for (const document of documents) {
-//       // Update the document to match the new schema
-//       document.ingredients = document.ingredients || document.ingredients;
-//       await document.save();
-//     }
-
-//     console.log("Migration completed successfully.");
-//   } catch (error) {
-//     console.error("Migration error:", error);
-//   }
-// };
-
-// updateDocuments();
+const Food = mongoose.model<FoodDocument>("Food", FoodSchema);
 
 export default Food;

@@ -19,31 +19,31 @@ foodRouter.get("/", getFoodListController);
 foodRouter.get("/get/:foodId", getFoodByIdController);
 foodRouter.post(
   "/",
-  passport.authenticate("jwt", { session: true }),
+  passport.authenticate("jwt", { session: false }),
   AdminCheck,
   createFoodController
 );
 foodRouter.post(
   "/addRate/:foodId",
-  passport.authenticate("jwt", { session: true }),
+  passport.authenticate("jwt", { session: false }),
   addRateToFoodController
 );
 foodRouter.get("/getRate/:foodId", getRateByFoodIdController);
 foodRouter.post(
   "/",
-  passport.authenticate("google-id-token", { session: true }),
+  passport.authenticate("google-id-token", { session: false }),
   AdminCheck,
   createFoodController
 );
 foodRouter.delete(
   "/:id",
-  passport.authenticate("jwt", { session: true }),
+  passport.authenticate("jwt", { session: false }),
   AdminCheck,
   deleteFoodByIdController
 );
 foodRouter.put(
   "/:id",
-  passport.authenticate("jwt", { session: true }),
+  passport.authenticate("jwt", { session: false }),
   AdminCheck,
   updateFoodByIdController
 );
