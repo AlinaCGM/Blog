@@ -53,7 +53,6 @@ const RegistrationForm = () => {
   const submitHandler = (values: InitialValues) => {
     setRegClicked(true);
     axios.post(`${url}/users`, values).then((res) => {
-      console.log(res.data, "data");
       if (res.data.message === "available") {
         handleClick();
       } else if (res.status === 200) {

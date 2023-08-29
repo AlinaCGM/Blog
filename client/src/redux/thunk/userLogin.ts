@@ -10,7 +10,6 @@ export function userLogin(values: InitialTypes) {
       .post(`${url}/users/login`, values)
       .then((res) => res.data)
       .then((data) => {
-        console.log(data, "data from userLogin.ts");
         if (data.message === "invalid") {
           dispatch(userActions.errorHandler("This email is not registerd!"));
           return;

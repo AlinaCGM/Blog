@@ -5,20 +5,18 @@ import { url } from "../../App";
 
 export function fetchFoodData() {
   return async (dispatch: AppDispatch) => {
-    const response = await fetch(`${url}/food`);
-    const data = await response.json();
-    dispatch(foodActions.getFoodList(data));
+    try {
+      const response = await fetch(`${url}/food`);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      dispatch(foodActions.getFoodList(data));
+    } catch (error) {
+      console.error(
+        "There was a problem with the fetch operation:",
+        (error as Error).message
+      );
+    }
   };
 }
-// export function fetchRateByFoodId(foodId: string) {
-//   return async (dispatch: AppDispatch) => {
-//     try {
-//       const response = await axios.get(`${url}/getRate/${foodId}`);
-//       const data = await response.data;
-//       console.log(data.rate, "rate in thunk"); // Log the retrieved rate
-//       dispatch(foodActions.addRate({ foodId, rate: data.rate }));
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-// }

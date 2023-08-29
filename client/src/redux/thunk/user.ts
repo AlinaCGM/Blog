@@ -14,7 +14,6 @@ export function fetchUser(userId: string | null) {
         headers: { Authorization: `Bearer ${token} ` },
       });
       dispatch(userActions.getUser(response.data));
-      console.log(response.data, "response.data");
     } catch (error) {
       console.log(error);
     }

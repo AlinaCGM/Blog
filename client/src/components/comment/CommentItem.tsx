@@ -18,8 +18,6 @@ type PropType = {
 };
 
 const CommentItem = ({ comment }: PropType) => {
-  // console.log(comment, "userComment from CommentItem.ts");
-
   const action = (
     <Button color="secondary" size="small">
       {comment.rate}

@@ -15,14 +15,12 @@ function GoogleLogIn() {
       <Box style={{ marginInline: "auto" }}>
         <GoogleLogin
           onSuccess={async (credentialResponse) => {
-            console.log(credentialResponse, "credentialResponse");
             //send credential
             const credential = credentialResponse.credential;
             let res = await axios.post(`${url}/users/googleLogIn`, {
               id_token: credential,
             });
             if (res.status === 200) {
-              console.log(res, "response from backend");
               dispatch(userActions.getUser(res.data.userData));
               dispatch(userActions.loginHandler(true));
               localStorage.setItem("token", res.data.token);

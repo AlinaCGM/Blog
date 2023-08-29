@@ -22,12 +22,10 @@ import { url } from "../../../App";
 const CmtManagement = () => {
   const userList = useSelector((state: RootState) => state.userList.usersData);
   const allRecipes = useSelector((state: RootState) => state.food.food);
-  console.log(userList, "user list");
   const allComments = useSelector(
     (state: RootState) => state.comment.allComments
   );
   const dispatch = useDispatch<AppDispatch>();
-  console.log(allComments, "all comments");
   useEffect(() => {
     dispatch(fetchAllComments());
   }, [dispatch, allComments]);

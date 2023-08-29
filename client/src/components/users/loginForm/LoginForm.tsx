@@ -58,7 +58,6 @@ const LoginForm = () => {
       .post(`${url}/users/login`, values)
       .then((res) => res.data)
       .then((data) => {
-        console.log(data, "data");
         if (data.message === "invalid") {
           dispatch(userActions.errorHandler("This email is not registered!"));
           handleClick();
@@ -71,7 +70,7 @@ const LoginForm = () => {
           dispatch(userActions.getUser(data.userData));
           dispatch(userActions.loginHandler(true));
           const token = data.token;
-          console.log(token, "token in thunk");
+
           localStorage.setItem("token", token);
           token && navigate("/user");
         }
