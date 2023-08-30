@@ -37,7 +37,6 @@ const updateUserById = async (
 const createOrFindUserByEmail = async (
   payload: Partial<UserDocument>
 ): Promise<UserDocument | null> => {
-  // console.log(payload, "payload");
   //email to find user by email
   const userEmail = payload.email;
   const result = await User.findOne({ email: userEmail });

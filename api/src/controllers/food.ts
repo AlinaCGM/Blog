@@ -45,7 +45,15 @@ export const updateIngredientsController = async (
 
 export const addRateToFoodController = async (req: Request, res: Response) => {
   try {
-    const { foodId, rate } = req.body;
+    const foodId = req.params.foodId; // Extracting foodId from route parameters
+    const { rate } = req.body; // Extracting rate from the request body
+
+    // Check if rate is provided and is a number
+    if (rate === undefined || typeof rate !== "number") {
+      return res
+        .status(400)
+        .json({ error: "Invalid or missing rate in the request." });
+    }
 
     const updatedFoodItem = await FoodServices.addRateToFood(foodId, rate);
     if (!updatedFoodItem) {
@@ -106,8 +114,6 @@ export const createFoodController = async (req: Request, res: Response) => {
       image: image,
       category: category,
     });
-
-    console.log(newFoodItem);
 
     const foodItem = await FoodServices.createFood(newFoodItem);
     res.json(foodItem);

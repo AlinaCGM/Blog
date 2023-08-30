@@ -2,7 +2,6 @@ import Food, { FoodDocument } from "../models/Food";
 
 export const createFood = async (food: FoodDocument): Promise<FoodDocument> => {
   try {
-    console.log(food, "Data before saving");
     return await food.save();
   } catch (error) {
     console.error("Error saving food:", error);
@@ -16,13 +15,26 @@ export const addRateToFood = async (
 ): Promise<FoodDocument | null> => {
   try {
     const foodItem = await Food.findById(foodId);
+
     if (!foodItem) {
       return null; // Food item not found
     }
 
-    // Calculate the new average rate based on existing rate and user-provided rate
-    const newTotalRate = (foodItem.rate + rate) / 2;
-    foodItem.rate = newTotalRate;
+    // Log values to debug
+    console.log("Current food item rate:", foodItem.rate);
+    console.log("Provided rate:", rate);
+
+    // Handle potential undefined rate in FoodDocument
+    const currentRate = typeof foodItem.rate === "number" ? foodItem.rate : 0;
+
+    const newRate = (currentRate + rate) / 2;
+
+    // Check for NaN before saving
+    if (isNaN(newRate)) {
+      throw new Error("Computed rate is invalid.");
+    }
+
+    foodItem.rate = newRate;
     await foodItem.save();
 
     return foodItem;
@@ -30,6 +42,7 @@ export const addRateToFood = async (
     throw error;
   }
 };
+
 export const getRateByFoodId = async (
   foodId: string
 ): Promise<number | null> => {
