@@ -98,9 +98,7 @@ const FoodItem = ({ food }: PropType) => {
   });
   const dispatch = useDispatch();
   const favState = useSelector((state: RootState) => state.favorite.favorites);
-  const foodItem = useSelector((state: RootState) => state.food.food);
   const isLoggedIn = useSelector((state: RootState) => state.user.isLogin);
-  const alertt = useSelector((state: RootState) => state.favorite.alert);
 
   const handleClick = () => {
     setOpen(true);

@@ -20,13 +20,31 @@ import {
   CardContent,
   CardMedia,
   Typography,
+  Button,
 } from "@mui/material";
 import BookmarkFavorite from "@mui/icons-material/BookmarkAddOutlined";
 
 const FavoriteList = () => {
+  const isLogin = useSelector((state: RootState) => state.user.isLogin);
   const favoriteList = useSelector(
     (state: RootState) => state.favorite.favorites
   );
+
+  if (!isLogin) {
+    return (
+      <Box sx={{ width: "90%", marginInline: "auto", textAlign: "center" }}>
+        <Typography variant="h6">
+          Please log in to view your favorites!
+        </Typography>
+        <Link to="/logIn">
+          <Button sx={{ textAlign: "center" }}>
+            <Typography>LOG IN</Typography>
+          </Button>
+        </Link>
+        {/* You can add a button/link here to direct the user to the login page if needed */}
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ width: "90%", marginInline: "auto" }}>

@@ -6,13 +6,10 @@ import {
   CardContent,
   CardMedia,
   IconButton,
-  TableBody,
-  TableCell,
-  TableRow,
   Typography,
 } from "@mui/material";
-import { useDispatch } from "react-redux";
 import { favoriteActions } from "../../../redux/slice/favorite";
+import { useDispatch } from "react-redux";
 
 type PropType = {
   favorite: FoodType;
