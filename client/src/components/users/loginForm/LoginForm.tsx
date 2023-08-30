@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import FormSchema from "../loginSchema/formSchema";
 import Snackbar from "@mui/material/Snackbar";
-import { Alert, Button, IconButton, TextField } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  Container,
+  IconButton,
+  TextField,
+} from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Form, Formik } from "formik";
@@ -79,10 +86,10 @@ const LoginForm = () => {
 
   return (
     <>
-      <div>
+      <Box>
         <h2>Login Your Account</h2>
         <span>We're missing your contribution.</span>
-      </div>
+      </Box>
       <Formik
         initialValues={initialValues}
         validationSchema={FormSchema}

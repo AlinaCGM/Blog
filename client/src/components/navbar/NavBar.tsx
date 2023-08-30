@@ -101,6 +101,14 @@ function NavBar(props: Props) {
             </ListItemButton>
           </ListItem>
         </Link>
+
+        <Link style={linkStyle} to="/registration">
+          <ListItem disablePadding>
+            <ListItemButton sx={{ textAlign: "center" }}>
+              <ListItemText>REGISTER</ListItemText>
+            </ListItemButton>
+          </ListItem>
+        </Link>
       </List>
     </Box>
   );

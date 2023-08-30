@@ -2,6 +2,7 @@ import AddFood from "../components/admin/addFood/AddFood";
 import FoodInformation from "../components/admin/foodInformation/FoodInformation";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import { Box } from "@mui/material";
 
 const FoodMng = () => {
   const token = localStorage.getItem("token");
@@ -10,10 +11,10 @@ const FoodMng = () => {
   return (
     <div className="food-mng-page-container">
       {token && isLogin && user.isAdmin === true ? (
-        <div className="food-mng-page">
+        <Box className="food-mng-page">
           <AddFood />
           <FoodInformation />
-        </div>
+        </Box>
       ) : (
         <h2>You don't have access to this page!</h2>
       )}

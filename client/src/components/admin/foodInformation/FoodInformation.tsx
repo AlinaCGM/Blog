@@ -24,7 +24,7 @@ import { FoodType } from "../../../types/foodType";
 
 const FoodInformation = () => {
   const foodList = useSelector((state: RootState) => state.food.food);
-  console.log(foodList, "foodList from FoodInformation");
+
   const dispatch = useDispatch<AppDispatch>();
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);

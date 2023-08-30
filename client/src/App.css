@@ -26,6 +26,7 @@
 }
 .food-mng-page {
   display: flex;
+  flex-wrap: wrap;
 }
 .favorite-page {
   padding: 0 150px;

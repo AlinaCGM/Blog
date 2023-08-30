@@ -273,11 +273,6 @@ const FoodDetail = ({ food }: PropType) => {
           autoHideDuration={3000}
           onClose={handleLoginAlertClose}
           anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-          sx={{
-            position: "absolute",
-            top: "50%",
-            transform: "translateY(-50%)",
-          }}
         >
           <Alert
             onClose={handleLoginAlertClose}

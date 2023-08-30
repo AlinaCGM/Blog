@@ -1,14 +1,14 @@
-.register-form {
+/* .register-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   margin-top: 20px;
-}
+} */
 
-.register-form input{
-  width:420px
-}
+/* .register-form input {
+  width: 420px;
+} */
 /* .textBox {
   width: 420px;
 } */

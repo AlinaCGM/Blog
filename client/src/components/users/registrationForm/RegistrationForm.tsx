@@ -1,7 +1,7 @@
 import "./registrationForm.css";
 import RegistrationSchema from "../registrationSchema/registrationSchema";
 
-import { Alert, Button, TextField } from "@mui/material";
+import { Alert, Box, Button, TextField } from "@mui/material";
 import Snackbar from "@mui/material/Snackbar";
 
 import { Form, Formik } from "formik";
@@ -63,7 +63,7 @@ const RegistrationForm = () => {
   };
 
   return (
-    <div>
+    <Box>
       <div>
         <h1>Create a new account</h1>
         <span>It's free and always will be.</span>
@@ -76,64 +76,61 @@ const RegistrationForm = () => {
         {({ errors, touched, handleChange }) => {
           return (
             <Form>
-              <div className="register-form">
-                <div>
-                  <TextField
-                    label="First Name"
-                    name="firstName"
-                    onChange={handleChange}
-                  />
-                  {errors.firstName && touched.firstName ? (
-                    <div className="error-message">{errors.firstName}</div>
-                  ) : null}
-                </div>
-                <div>
-                  <TextField
-                    label="Last Name"
-                    name="lastName"
-                    onChange={handleChange}
-                  />
-                  {errors.lastName && touched.lastName ? (
-                    <div className="error-message">{errors.lastName}</div>
-                  ) : null}
-                </div>
-                <div>
-                  <TextField
-                    label="Email"
-                    name="email"
-                    onChange={handleChange}
-                  />
-                  {errors.email && touched.email ? (
-                    <div className="error-message">{errors.email}</div>
-                  ) : null}
-                </div>
-                <div>
-                  <TextField
-                    label="Password"
-                    name="password"
-                    type="password"
-                    onChange={handleChange}
-                  />
-                  {errors.password && touched.password ? (
-                    <div className="error-message">{errors.password}</div>
-                  ) : null}
-                </div>
-                <div>
-                  <TextField
-                    label="Confirm Password"
-                    name="confirmPassword"
-                    type="password"
-                    onChange={handleChange}
-                  />
-                  {errors.confirmPassword && touched.confirmPassword ? (
-                    <div className="error-message">
-                      {errors.confirmPassword}
-                    </div>
-                  ) : null}
-                </div>
-              </div>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
 
-              <div>
+                  alignItems: "center",
+                  gap: "20px",
+                  marginTop: "20px",
+                }}
+              >
+                <TextField
+                  label="First Name"
+                  name="firstName"
+                  onChange={handleChange}
+                />
+                {errors.firstName && touched.firstName ? (
+                  <div className="error-message">{errors.firstName}</div>
+                ) : null}
+
+                <TextField
+                  label="Last Name"
+                  name="lastName"
+                  onChange={handleChange}
+                />
+                {errors.lastName && touched.lastName ? (
+                  <div className="error-message">{errors.lastName}</div>
+                ) : null}
+
+                <TextField label="Email" name="email" onChange={handleChange} />
+                {errors.email && touched.email ? (
+                  <div className="error-message">{errors.email}</div>
+                ) : null}
+
+                <TextField
+                  label="Password"
+                  name="password"
+                  type="password"
+                  onChange={handleChange}
+                />
+                {errors.password && touched.password ? (
+                  <div className="error-message">{errors.password}</div>
+                ) : null}
+
+                <TextField
+                  label="Confirm Password"
+                  name="confirmPassword"
+                  type="password"
+                  onChange={handleChange}
+                />
+                {errors.confirmPassword && touched.confirmPassword ? (
+                  <div className="error-message">{errors.confirmPassword}</div>
+                ) : null}
+              </Box>
+
+              <Box>
                 <Button
                   variant="contained"
                   type="submit"
@@ -147,7 +144,7 @@ const RegistrationForm = () => {
                     "register"
                   )}
                 </Button>
-              </div>
+              </Box>
             </Form>
           );
         }}
@@ -158,7 +155,7 @@ const RegistrationForm = () => {
           The email is already registerd!!
         </Alert>
       </Snackbar>
-    </div>
+    </Box>
   );
 };
 

@@ -102,14 +102,14 @@ const FoodItem = ({ food }: PropType) => {
   };
 
   const submitRate = async () => {
-    if (userRate !== 0) { 
+    if (userRate !== 0) {
       setIsSavingRate(true);
       try {
         // Perform POST request to add rate to the backend (MongoDB)
-        const response = await fetch(`${url}/addRate/${food._id}`, {
+        const response = await fetch(`${url}/food/addRate/${food._id}`, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",  
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({ rate: userRate }), // Send only the rate in the request body
         });
@@ -199,7 +199,7 @@ const FoodItem = ({ food }: PropType) => {
       <Typography>{(food.description ?? "").slice(0, 50)} ...</Typography>
 
       <Link to={`/food/${food._id}`}>
-        <Button></Button>
+        <Button> {">>"}</Button>
       </Link>
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
         <Alert
