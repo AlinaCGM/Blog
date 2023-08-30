@@ -12,6 +12,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { url } from "../../../App";
+import { Tooltip } from "@mui/material";
 
 import { favoriteActions } from "../../../redux/slice/favorite";
 import { foodActions } from "../../../redux/slice/food";
@@ -81,17 +82,39 @@ type PropType = {
 };
 
 const FoodItem = ({ food }: PropType) => {
+  const [rateAlertOpen, setRateAlertOpen] = useState(false);
+  const [hasRated, setHasRated] = useState(false);
   const [userRate, setUserRate] = useState<number>(food.rate);
   const [isSavingRate, setIsSavingRate] = useState(false);
   const [open, setOpen] = useState(false);
+  type AlertState = {
+    message: string;
+    severity: "success" | "error" | "warning" | "info";
+  };
+
+  const [alert, setAlert] = useState<AlertState>({
+    message: "",
+    severity: "success",
+  });
   const dispatch = useDispatch();
   const favState = useSelector((state: RootState) => state.favorite.favorites);
   const foodItem = useSelector((state: RootState) => state.food.food);
-  const alert = useSelector((state: RootState) => state.favorite.alert);
+  const isLoggedIn = useSelector((state: RootState) => state.user.isLogin);
+  const alertt = useSelector((state: RootState) => state.favorite.alert);
 
   const handleClick = () => {
     setOpen(true);
   };
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
   const handleRateChange = (
     event: React.ChangeEvent<{}>,
     newValue: number | null
@@ -101,17 +124,44 @@ const FoodItem = ({ food }: PropType) => {
     }
   };
 
+  const handleRateAlertClose = (
+    event?: React.SyntheticEvent,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setRateAlertOpen(false);
+  };
+  const token = localStorage.getItem("token");
+
   const submitRate = async () => {
+    // Check if user is logged in
+    if (!isLoggedIn) {
+      setAlert({
+        message: "Please log in to submit a rate",
+        severity: "warning",
+      });
+      setOpen(true);
+      return; // Exit the function
+    }
+
     if (userRate !== 0) {
       setIsSavingRate(true);
       try {
+        console.log("Submitting rate:", userRate); // Log the rate value
+
+        const requestBody = JSON.stringify({ rate: userRate });
+        console.log("Request body:", requestBody); // Log the request body
+
         // Perform POST request to add rate to the backend (MongoDB)
         const response = await fetch(`${url}/food/addRate/${food._id}`, {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json", // Set Content-Type header
           },
-          body: JSON.stringify({ rate: userRate }), // Send only the rate in the request body
+          body: requestBody,
         });
 
         if (response.ok) {
@@ -119,25 +169,33 @@ const FoodItem = ({ food }: PropType) => {
           dispatch(
             foodActions.addRate({ foodId: food._id, rate: updatedFood.rate })
           );
-          setIsSavingRate(false);
+          setAlert({
+            message: "Thank you for your rate!",
+            severity: "success",
+          });
+          setOpen(true);
+          setHasRated(true);
         } else {
           // Handle error if the request fails
-          console.error("Error adding rate.");
+          const errorData = await response.json(); // Try to get error details from the response
+          setAlert({
+            message: "Error adding rate.",
+            severity: "error",
+          });
+          setOpen(true);
+          console.error("Error adding rate:", errorData);
         }
       } catch (error) {
+        setAlert({
+          message: "An error occurred. Please try again.",
+          severity: "error",
+        });
+        setOpen(true);
         console.error("Error:", error);
+      } finally {
+        setIsSavingRate(false); // Reset the saving state after the rate has been processed.
       }
     }
-  };
-
-  const handleClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: string
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
   };
 
   // Check Favorite
@@ -177,16 +235,19 @@ const FoodItem = ({ food }: PropType) => {
         </FoodItemImageFrame>
       </Link>
       <FoodItemRateFav>
-        <div>
-          <Rating
-            name="simple-controlled"
-            value={userRate}
-            onChange={handleRateChange}
-          />
-          <Button onClick={submitRate} disabled={isSavingRate}>
-            {isSavingRate ? "Saving..." : "Submit Rate"}
-          </Button>
-        </div>
+        <Rating
+          name="simple-controlled"
+          value={userRate}
+          onChange={handleRateChange}
+        />
+        <Tooltip title={!isLoggedIn ? "Please log in to submit a rate" : ""}>
+          <span>
+            <Button onClick={submitRate} disabled={isSavingRate || hasRated}>
+              {isSavingRate ? "Rate Submitted" : "Submit Rate"}
+            </Button>
+          </span>
+        </Tooltip>
+
         <div>
           <IconButton onClick={favHandler}>
             <FavoriteBorderIcon sx={{ color: isFav ? "red" : "gray" }} />
@@ -204,10 +265,10 @@ const FoodItem = ({ food }: PropType) => {
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
         <Alert
           onClose={handleClose}
-          severity={isFav ? "success" : "error"}
+          severity={alert.severity}
           sx={{ width: "100%" }}
         >
-          {alert}
+          {alert.message}
         </Alert>
       </Snackbar>
     </FoodItemContainer>
