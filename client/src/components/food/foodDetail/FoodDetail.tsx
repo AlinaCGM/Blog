@@ -138,6 +138,9 @@ const FoodDetail = ({ food }: PropType) => {
       console.error(err);
     }
   };
+  const ingredientsArray = food.ingredients
+    .flatMap((ingredientString) => ingredientString.split(",\n"))
+    .map((ingredient) => ingredient.trim());
 
   return (
     <Box>
@@ -175,22 +178,22 @@ const FoodDetail = ({ food }: PropType) => {
               </CardActionArea>
             </Card>
 
-            {food.ingredients.map((ingredient, index) => (
-              <Typography
-                key={index}
-                textAlign="justify"
-                variant="body2"
-                component="li"
-                sx={{
-                  marginBlock: "10px",
-                  width: "200px",
-                  marginInline: "auto",
-                }}
-              >
-                {ingredient.trim()}
-              </Typography>
-            ))}
-
+            <Typography
+              textAlign="justify"
+              variant="body2"
+              component="div"
+              sx={{
+                marginBlock: "10px",
+                width: "200px",
+                marginInline: "auto",
+              }}
+            >
+              <ul>
+                {ingredientsArray.map((ingredient, index) => (
+                  <li key={index}>{ingredient}</li>
+                ))}
+              </ul>
+            </Typography>
             {food.description.split("\n").map((description, index) => (
               <Typography
                 textAlign="left"

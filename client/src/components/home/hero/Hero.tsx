@@ -204,29 +204,28 @@ const Hero = () => {
       </Box>
       <Box sx={{ width: "90%", marginInline: "auto" }}>
         <Typography
-        // sx={{
-        //   marginBlock: {
-        //     xs: "18px",
-        //     sm: "30px",
-        //     md: "36px",
-        //     lg: "50px",
-        //   },
-        //   lineHeight: {
-        //     xs: "18px",
-        //     sm: "20px",
-        //     md: "26px",
-        //     lg: "32px",
-        //   },
-        //   textAlign: "justify",
+          sx={{
+            marginBlock: {
+              xs: "18px",
+              sm: "30px",
+              md: "36px",
+              lg: "50px",
+            },
+            lineHeight: {
+              xs: "18px",
+              sm: "20px",
+              md: "26px",
+              lg: "32px",
+            },
+            textAlign: "justify",
 
-        //   fontSize: {
-        //     xs: "14px",
-        //     sm: "20px",
-        //     md: "22px",
-        //     lg: "28px",
-        //   },
-        //   fontFamily: " Josefin Sans",
-        // }}
+            fontSize: {
+              xs: "14px",
+              sm: "20px",
+              md: "22px",
+              lg: "28px",
+            },
+          }}
         >
           Expect new recipes weekly, with a mix of savory and sweet including
           desserts, breakfasts, entrées, sides, snacks, and more

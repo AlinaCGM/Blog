@@ -128,14 +128,14 @@ const AddFood = () => {
                       target: {
                         name: event.target.name,
                         value: event.target.value
-                          .split("\n")
+                          .split(",")
                           .map((str) => str.trim()),
                       },
                     });
                   }}
                   value={
                     Array.isArray(values.ingredients)
-                      ? values.ingredients.join("\n")
+                      ? values.ingredients.join(", ")
                       : ""
                   }
                 />

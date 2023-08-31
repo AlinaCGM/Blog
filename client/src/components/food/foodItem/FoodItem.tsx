@@ -7,6 +7,9 @@ import {
   Snackbar,
   Alert,
   Typography,
+  List,
+  ListItem,
+  ListItemText,
 } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { Link } from "react-router-dom";
@@ -82,7 +85,6 @@ type PropType = {
 };
 
 const FoodItem = ({ food }: PropType) => {
-  const [rateAlertOpen, setRateAlertOpen] = useState(false);
   const [hasRated, setHasRated] = useState(false);
   const [userRate, setUserRate] = useState<number>(food.rate);
   const [isSavingRate, setIsSavingRate] = useState(false);
@@ -122,15 +124,6 @@ const FoodItem = ({ food }: PropType) => {
     }
   };
 
-  const handleRateAlertClose = (
-    event?: React.SyntheticEvent,
-    reason?: string
-  ) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setRateAlertOpen(false);
-  };
   const token = localStorage.getItem("token");
 
   const submitRate = async () => {
@@ -252,9 +245,17 @@ const FoodItem = ({ food }: PropType) => {
           </IconButton>
         </div>
       </FoodItemRateFav>
-      <Typography sx={{ marginBlock: "10px" }}>
-        {(food.ingredients ?? "").slice(0, 20)} ...
-      </Typography>
+      <List sx={{ marginBlock: 2, paddingLeft: 2 }}>
+        <ListItem disableGutters>
+          <ListItemText
+            primary={
+              <Typography variant="body1">
+                {(food.ingredients ?? "").slice(0, 20)} ...
+              </Typography>
+            }
+          />
+        </ListItem>
+      </List>
       <Typography>{(food.description ?? "").slice(0, 50)} ...</Typography>
 
       <Link to={`/food/${food._id}`}>
