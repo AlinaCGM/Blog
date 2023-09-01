@@ -10,38 +10,40 @@ https://blog-client-wz90.onrender.com/
 This GitHub repository houses the source code for a web application comprising a backend (API) and a frontend (Client). The project is designed to provide users with various functionalities related to recipes, including registration, login, recipe viewing, commenting, rating, favoriting, and administration. Below, you'll find a breakdown of the main dependencies used in both the backend and frontend of this project.
 
 ### Backend (API)
+
 Main Dependencies
 
-Node.js: Runtime environment for server-side JavaScript.
-Express: Web application framework for building APIs.
-Mongoose: MongoDB object modeling tool.
-bcrypt: Password hashing library.
-jsonwebtoken: JWT authentication library.
-passport: User authentication middleware.
-axios: HTTP client for making API requests.
-dotenv: Environment variable management.
-cors: Cross-Origin Resource Sharing middleware.
+*Node.js: Runtime environment for server-side JavaScript.
+*Express: Web application framework for building APIs.
+*Mongoose: MongoDB object modeling tool.
+*bcrypt: Password hashing library.
+*jsonwebtoken: JWT authentication library.
+*passport: User authentication middleware.
+*axios: HTTP client for making API requests.
+*dotenv: Environment variable management.
+\*cors: Cross-Origin Resource Sharing middleware.
 
 ### Frontend (Client)
+
 Main Dependencies
 
-React: JavaScript library for building user interfaces.
-Redux: State management library.
-axios: HTTP client for making API requests.
-formik: Form management library.
-react-router-dom: Routing library for navigation.
-@mui/material: Material-UI library for UI components.
-@mui/icons-material: Material-UI icons.
-@react-oauth/google: OAuth2 authentication library.
-yup: Schema validation library.
-dotenv: Environment variable management.
-
+*React: JavaScript library for building user interfaces.
+*Redux: State management library.
+*axios: HTTP client for making API requests.
+*formik: Form management library.
+_react-router-dom: Routing library for navigation.
+_@mui/material: Material-UI library for UI components.
+_@mui/icons-material: Material-UI icons.
+_@react-oauth/google: OAuth2 authentication library.
+*yup: Schema validation library.
+*dotenv: Environment variable management.
 
 ### Key Features:
-*_Responsive Design:_
+
+\*_Responsive Design:_
 My project features a responsive design that ensures a seamless user experience across a wide range of devices and screen sizes. Whether you're accessing it from a desktop computer, tablet, or smartphone, the interface will adapt to provide optimal usability and readability.
 
-*_User Registration and Login:_
+\*_User Registration and Login:_
 Users can register for an account and log in securely.
 Recipe Viewing:
 
@@ -55,7 +57,7 @@ Favorite Recipes:
 Users can add recipes to their favorites, but they need to be logged in to view their favorite recipes.
 Admin Features:
 
-*_Users with admin privileges can access user management features._
+\*_Users with admin privileges can access user management features._
 Admins can ban users, promote users to admin, and manage user accounts.
 ![3](https://github.com/AlinaCGM/Blog/assets/71669291/5523b27c-026d-4906-b582-2aea8fe51f7f)
 
