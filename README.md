@@ -11,32 +11,32 @@ This GitHub repository houses the source code for a web application comprising a
 
 ### Backend (API)
 
-Main Dependencies
+<ul>Main Dependencies</ul>
 
-*Node.js: Runtime environment for server-side JavaScript.
-*Express: Web application framework for building APIs.
-*Mongoose: MongoDB object modeling tool.
-*bcrypt: Password hashing library.
-*jsonwebtoken: JWT authentication library.
-*passport: User authentication middleware.
-*axios: HTTP client for making API requests.
-*dotenv: Environment variable management.
-\*cors: Cross-Origin Resource Sharing middleware.
+<li>Node.js: Runtime environment for server-side JavaScript.</li>
+<li>Express: Web application framework for building APIs.</li>
+<li>Mongoose: MongoDB object modeling tool.</li>
+<li>bcrypt: Password hashing library.</li>
+<li>jsonwebtoken: JWT authentication library.</li>
+<li>passport: User authentication middleware.</li>
+<li>axios: HTTP client for making API requests.</li>
+<li>dotenv: Environment variable management.</li>
+<li>cors: Cross-Origin Resource Sharing middleware.</li>
 
 ### Frontend (Client)
 
-Main Dependencies
+<ul>Main Dependencies</ul>
 
-*React: JavaScript library for building user interfaces.
-*Redux: State management library.
-*axios: HTTP client for making API requests.
-*formik: Form management library.
-_react-router-dom: Routing library for navigation.
-_@mui/material: Material-UI library for UI components.
-_@mui/icons-material: Material-UI icons.
-_@react-oauth/google: OAuth2 authentication library.
-*yup: Schema validation library.
-*dotenv: Environment variable management.
+<li>React: JavaScript library for building user interfaces.</li>
+<li>Redux: State management library.</li>
+<li>axios: HTTP client for making API requests.</li>
+<li>formik: Form management library.</li>
+<li>react-router-dom: Routing library for navigation.</li>
+<li>@mui/material: Material-UI library for UI components.</li>
+<li>@mui/icons-material: Material-UI icons.</li>
+<li>@react-oauth/google: OAuth2 authentication library.</li>
+<li>yup: Schema validation library.</li>
+<li>dotenv: Environment variable management.</li>
 
 ### Key Features:
 
