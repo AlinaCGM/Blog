@@ -54,6 +54,12 @@ Admin Features:
 
 Users with admin privileges can access user management features.
 Admins can ban users, promote users to admin, and manage user accounts.
+![3](https://github.com/AlinaCGM/Blog/assets/71669291/5523b27c-026d-4906-b582-2aea8fe51f7f)
+
 Admins can add, update, and remove recipes.
+![1](https://github.com/AlinaCGM/Blog/assets/71669291/54b4c726-0b60-491e-9cbf-6644b089d68e)
+
 Admins can view and remove comments made by users.
+![2](https://github.com/AlinaCGM/Blog/assets/71669291/b6e0246a-6f11-4812-b663-527d7c76a96f)
+
 This project offers a comprehensive recipe management system with role-based access control and authentication features to enhance the user experience and maintain data integrity.
