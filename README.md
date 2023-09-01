@@ -22,6 +22,16 @@ axios: HTTP client for making API requests.
 dotenv: Environment variable management.
 cors: Cross-Origin Resource Sharing middleware.
 
+Key Features:
+
+User registration and login.
+Recipe viewing with comments and ratings.
+Ability to add recipes to favorites.
+Admin features for user and recipe management.
+Responsive Design:
+
+Our project features a responsive design that ensures a seamless user experience across a wide range of devices and screen sizes. Whether you're accessing it from a desktop computer, tablet, or smartphone, the interface will adapt to provide optimal usability and readability.
+
 Frontend (Client)
 Main Dependencies
 
