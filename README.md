@@ -45,26 +45,27 @@ My project features a responsive design that ensures a seamless user experience 
 
 \*_User Registration and Login:_
 Users can register for an account and log in securely.
-Recipe Viewing:
 
+_Recipe Viewing:_
 Unregistered users can view all recipes, their ratings, and comments.
-Comments and Ratings:
 
+_Comments and Ratings:_
 Unregistered users can view and read comments and ratings.
 Only logged-in users can leave comments and ratings.
-Favorite Recipes:
 
+_Favorite Recipes:_
 Users can add recipes to their favorites, but they need to be logged in to view their favorite recipes.
 Admin Features:
 
 \*_Users with admin privileges can access user management features._
+
 Admins can ban users, promote users to admin, and manage user accounts.
-![3](https://github.com/AlinaCGM/Blog/assets/71669291/5523b27c-026d-4906-b582-2aea8fe51f7f)
+![2](https://github.com/AlinaCGM/Blog/assets/71669291/b6e0246a-6f11-4812-b663-527d7c76a96f)
 
 Admins can add, update, and remove recipes.
 ![1](https://github.com/AlinaCGM/Blog/assets/71669291/54b4c726-0b60-491e-9cbf-6644b089d68e)
 
 Admins can view and remove comments made by users.
-![2](https://github.com/AlinaCGM/Blog/assets/71669291/b6e0246a-6f11-4812-b663-527d7c76a96f)
+![3](https://github.com/AlinaCGM/Blog/assets/71669291/5523b27c-026d-4906-b582-2aea8fe51f7f)
 
 This project offers a comprehensive recipe management system with role-based access control and authentication features to enhance the user experience and maintain data integrity.
