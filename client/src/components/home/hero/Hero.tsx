@@ -12,6 +12,15 @@ import im7 from "../../../assets/pancake.jpg";
 import im8 from "../../../assets/bocal.jpg";
 import pepper from "../../../assets/pepper1.jpg";
 
+const customTextStyle = {
+  paddingInline: "5px",
+  fontFamily: " Josefin Sans",
+  color: "#474545",
+  fontSize: "20px",
+  marginTop: "10px",
+  textAlign: "justify",
+};
+
 const Hero = () => {
   return (
     <Box className="hero-container" sx={{ width: "90%", margin: "auto" }}>
@@ -89,7 +98,7 @@ const Hero = () => {
           </Typography>
         </Box>
       </Box>
-      <Typography
+      {/* <Typography
         variant="h5"
         sx={{
           color: " #000000",
@@ -107,13 +116,14 @@ const Hero = () => {
         }}
       >
         Find you own perfect recipe
-      </Typography>
+      </Typography> */}
       <Box
         sx={{
           display: "flex",
           justifyContent: "space-evenly",
           flexWrap: "wrap",
           gap: 5,
+          marginTop: "50px",
         }}
       >
         <Card
@@ -131,7 +141,14 @@ const Hero = () => {
             image={im1}
             alt="Paella dish"
           />
-          <CardContent sx={{ height: "25%" }}>
+          <CardContent
+            sx={{
+              height: "25%",
+              color: "#474545",
+              fontSize: "20px",
+              textAlign: "justify",
+            }}
+          >
             Whether you’re after sausages and burgers, chicken and fish, or
             those all-important sides, we’ve got you covered. Here are our best
             recipes.
@@ -152,7 +169,14 @@ const Hero = () => {
             image={im2}
             alt="Paella dish"
           />
-          <CardContent sx={{ height: "25%" }}>
+          <CardContent
+            sx={{
+              height: "25%",
+              color: "#474545",
+              fontSize: "20px",
+              textAlign: "justify",
+            }}
+          >
             Whether you want to mix up your usual rotation of vegetarian dinner
             recipes, we’re betting that you’ll find what you’re looking for
             here!
@@ -173,7 +197,15 @@ const Hero = () => {
             image={im3}
             alt="Paella dish"
           />
-          <CardContent sx={{ height: "25%" }}>
+
+          <CardContent
+            sx={{
+              height: "25%",
+              color: "#474545",
+              fontSize: "20px",
+              textAlign: "justify",
+            }}
+          >
             We've included many desserts that are ready in under an hour , so
             you're not slaving away in the kitchen prepping a towering dessert
             all day long.
@@ -195,7 +227,14 @@ const Hero = () => {
             image={im4}
             alt="Paella dish"
           />
-          <CardContent sx={{ height: "25%" }}>
+          <CardContent
+            sx={{
+              height: "25%",
+              color: "#474545",
+              fontSize: "20px",
+              textAlign: "justify",
+            }}
+          >
             Everyone has their preferences, but no matter whether your go-to is
             gin, tequila, or rye whiskey, the drinks listed here transcend
             predilection.
@@ -212,26 +251,37 @@ const Hero = () => {
               lg: "50px",
             },
             lineHeight: {
-              xs: "18px",
-              sm: "20px",
-              md: "26px",
-              lg: "32px",
+              xs: "26px",
+              sm: "32px",
+              md: "34px",
+              lg: "36px",
             },
             textAlign: "justify",
 
             fontSize: {
-              xs: "14px",
-              sm: "20px",
-              md: "22px",
-              lg: "28px",
+              xs: "20px",
+              sm: "24px",
+              md: "28px",
+              lg: "32px",
             },
+            fontFamily: "Cardo",
+            color: "#070707",
+            width: "80%",
+            marginInline: "auto",
+            borderTop: "2px solid grey",
+            borderBottom: "2px solid grey",
+            paddingBlock: "40px",
+            textDecoration: "none",
           }}
         >
           Expect new recipes weekly, with a mix of savory and sweet including
           desserts, breakfasts, entrées, sides, snacks, and more
-          <Link to="/all-recipes"> here .</Link> When you make one of our
-          recipes we want you to say, “How was it that simple but still tastes
-          that good?!”
+          <Link className="link-hero" to="/all-recipes">
+            {" "}
+            here .
+          </Link>{" "}
+          When you make one of our recipes we want you to say, “How was it that
+          simple but still tastes that good?!”
         </Typography>
       </Box>
       {/* daily menu box */}
@@ -281,7 +331,16 @@ const Hero = () => {
             image={im6}
             alt="Paella dish"
           />
-          <Typography sx={{ paddingInline: "5px" }}>
+          <Typography
+            sx={{
+              paddingInline: "5px",
+              fontFamily: " Josefin Sans",
+              color: "#474545",
+              fontSize: "20px",
+              marginTop: "10px",
+              textAlign: "justify",
+            }}
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
             scelerisque felis sapien, et euismod dolor tincidunt vitae. Praesent
             porttitor, nunc nec feugiat rutrum, ligula ante volutpat lorem,
@@ -319,7 +378,16 @@ const Hero = () => {
             image={im5}
             alt="Paella dish"
           />
-          <Typography sx={{ paddingInline: "5px" }}>
+          <Typography
+            sx={{
+              paddingInline: "5px",
+              fontFamily: " Josefin Sans",
+              color: "#474545",
+              fontSize: "20px",
+              marginTop: "10px",
+              textAlign: "justify",
+            }}
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
             scelerisque felis sapien, et euismod dolor tincidunt vitae. Praesent
             porttitor, nunc nec feugiat rutrum, ligula ante volutpat lorem,
@@ -357,7 +425,16 @@ const Hero = () => {
             image={im7}
             alt="Paella dish"
           />
-          <Typography sx={{ paddingInline: "5px" }}>
+          <Typography
+            sx={{
+              paddingInline: "5px",
+              fontFamily: " Josefin Sans",
+              color: "#474545",
+              fontSize: "20px",
+              marginTop: "10px",
+              textAlign: "justify",
+            }}
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
             scelerisque felis sapien, et euismod dolor tincidunt vitae. Praesent
             porttitor, nunc nec feugiat rutrum, ligula ante volutpat lorem,
@@ -395,7 +472,16 @@ const Hero = () => {
             image={im8}
             alt="Paella dish"
           />
-          <Typography sx={{ paddingInline: "5px" }}>
+          <Typography
+            sx={{
+              paddingInline: "5px",
+              fontFamily: " Josefin Sans",
+              color: "#474545",
+              fontSize: "20px",
+              marginTop: "10px",
+              textAlign: "justify",
+            }}
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
             scelerisque felis sapien, et euismod dolor tincidunt vitae. Praesent
             porttitor, nunc nec feugiat rutrum, ligula ante volutpat lorem,
