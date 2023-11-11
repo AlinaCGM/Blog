@@ -33,7 +33,7 @@ const AboutUs = () => {
           style={{ textAlign: "justify" }}
         >
           {
-            "I am a Frontend developer with 2+ years of hands-on experience in frontend development, building web apps with Javascript, ReactJs, Typescript and other stacks. I make the concept, build from scratch and maintain the web apps by using the latest techniques.I have a genuine interest in new technologies and enjoy exploring new areas, always putting the focus on the user experience. "
+            "I am a Fullstack developer with 2+ years of hands-on experience in frontend development, building web apps with Javascript, ReactJs, Typescript and other stacks. I make the concept, build from scratch and maintain the web apps by using the latest techniques.I have a genuine interest in new technologies and enjoy exploring new areas, always putting the focus on the user experience. "
           }
         </Typography>
       </div>

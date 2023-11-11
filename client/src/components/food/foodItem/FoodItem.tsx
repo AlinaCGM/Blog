@@ -218,8 +218,8 @@ const FoodItem = ({ food }: PropType) => {
   };
 
   return (
-    <FoodItemContainer sx={{ width: "90%", marginInline: "auto" }}>
-      <FoodItemHeading>{food.title}</FoodItemHeading>
+    <FoodItemContainer sx={{ width: "90%", marginInline: "auto", boxShadow: '0 0 50px #817d7d',marginTop:'50px' }}>
+      <h2  style={{marginTop:'20px'}}>{food.title}</h2>
       <Link to={`/food/${food._id}`}>
         <FoodItemImageFrame>
           <FoodItemImage src={food.image} alt={food.title} />
@@ -227,6 +227,7 @@ const FoodItem = ({ food }: PropType) => {
       </Link>
       <FoodItemRateFav>
         <Rating
+        style={{marginLeft:'5%'}}
           name="simple-controlled"
           value={userRate}
           onChange={handleRateChange}
@@ -241,7 +242,7 @@ const FoodItem = ({ food }: PropType) => {
 
         <div>
           <IconButton onClick={favHandler}>
-            <FavoriteBorderIcon sx={{ color: isFav ? "red" : "gray" }} />
+            <FavoriteBorderIcon sx={{ color: isFav ? "red" : "gray", marginRight:'1rem' }} />
           </IconButton>
         </div>
       </FoodItemRateFav>
