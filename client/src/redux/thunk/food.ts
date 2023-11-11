@@ -13,7 +13,7 @@ export function fetchFoodData() {
       const data = await response.json();
       dispatch(foodActions.getFoodList(data));
     } catch (error) {
-      console.error(
+      console.log(
         "There was a problem with the fetch operation:",
         (error as Error).message
       );

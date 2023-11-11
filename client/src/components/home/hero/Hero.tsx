@@ -12,13 +12,14 @@ import im7 from "../../../assets/pancake.jpg";
 import im8 from "../../../assets/bocal.jpg";
 import pepper from "../../../assets/pepper1.jpg";
 
-const customTextStyle = {
-  paddingInline: "5px",
-  fontFamily: " Josefin Sans",
-  color: "#474545",
+const customTextStyle:  React.CSSProperties = {
+  height: "25%",
   fontSize: "20px",
-  marginTop: "10px",
   textAlign: "justify",
+  color: "#1b1919",
+  paddingInline:'15px',
+  fontFamily: 'Montserrat',
+ 
 };
 
 const Hero = () => {
@@ -41,7 +42,7 @@ const Hero = () => {
         />
         <Box
           sx={{
-            // backgroundColor: "rgb(172, 191, 197, 0.2)",
+             backgroundColor: "rgb(172, 191, 197, 0.2)",
             position: "absolute",
             top: {
               xs: "70px",
@@ -77,7 +78,7 @@ const Hero = () => {
           <Typography
             className="header2"
             sx={{
-              fontFamily: " Josefin Sans",
+            
               color: " #374659",
               lineHeight: {
                 xs: "14px",
@@ -98,11 +99,11 @@ const Hero = () => {
           </Typography>
         </Box>
       </Box>
-      {/* <Typography
+      <Typography
         variant="h5"
         sx={{
           color: " #000000",
-          fontFamily: " Josefin Sans",
+         
           fontSize: {
             xs: "18px",
             sm: "26px",
@@ -116,7 +117,7 @@ const Hero = () => {
         }}
       >
         Find you own perfect recipe
-      </Typography> */}
+      </Typography>
       <Box
         sx={{
           display: "flex",
@@ -142,12 +143,7 @@ const Hero = () => {
             alt="Paella dish"
           />
           <CardContent
-            sx={{
-              height: "25%",
-              color: "#474545",
-              fontSize: "20px",
-              textAlign: "justify",
-            }}
+           style={customTextStyle}
           >
             Whether you’re after sausages and burgers, chicken and fish, or
             those all-important sides, we’ve got you covered. Here are our best
@@ -170,12 +166,7 @@ const Hero = () => {
             alt="Paella dish"
           />
           <CardContent
-            sx={{
-              height: "25%",
-              color: "#474545",
-              fontSize: "20px",
-              textAlign: "justify",
-            }}
+            style={customTextStyle}
           >
             Whether you want to mix up your usual rotation of vegetarian dinner
             recipes, we’re betting that you’ll find what you’re looking for
@@ -199,12 +190,7 @@ const Hero = () => {
           />
 
           <CardContent
-            sx={{
-              height: "25%",
-              color: "#474545",
-              fontSize: "20px",
-              textAlign: "justify",
-            }}
+            style={customTextStyle}
           >
             We've included many desserts that are ready in under an hour , so
             you're not slaving away in the kitchen prepping a towering dessert
@@ -228,12 +214,7 @@ const Hero = () => {
             alt="Paella dish"
           />
           <CardContent
-            sx={{
-              height: "25%",
-              color: "#474545",
-              fontSize: "20px",
-              textAlign: "justify",
-            }}
+             style={customTextStyle}
           >
             Everyone has their preferences, but no matter whether your go-to is
             gin, tequila, or rye whiskey, the drinks listed here transcend
@@ -241,7 +222,7 @@ const Hero = () => {
           </CardContent>
         </Card>
       </Box>
-      <Box sx={{ width: "90%", marginInline: "auto" }}>
+      <Box sx={{ width: "90%", marginInline: "auto", marginBlock:'100px' }}>
         <Typography
           sx={{
             marginBlock: {
@@ -264,14 +245,19 @@ const Hero = () => {
               md: "28px",
               lg: "32px",
             },
-            fontFamily: "Cardo",
-            color: "#070707",
+           
+            color: "#333131",
             width: "80%",
             marginInline: "auto",
-            borderTop: "2px solid grey",
-            borderBottom: "2px solid grey",
+      
+            textAlignLast:'center',
+            paddingInline:'5%',
+            boxShadow: '0 0 50px #535151',
+            border:'none',
+            borderRadius:'5px',
             paddingBlock: "40px",
             textDecoration: "none",
+            fontFamily: 'Montserrat',
           }}
         >
           Expect new recipes weekly, with a mix of savory and sweet including
@@ -310,14 +296,10 @@ const Hero = () => {
               xs: "wrap",
               sm: "noWrap",
             },
-            borderBottom: {
-              xs: "1px solid grey",
-              sm: "none",
-            },
-            borderRight: {
-              xs: "none",
-              lg: "1px solid grey",
-            },
+            border: "10px solid #d89b9b",
+            padding:'20px',
+           
+            
           }}
         >
           <CardMedia
@@ -331,17 +313,11 @@ const Hero = () => {
             image={im6}
             alt="Paella dish"
           />
+          
           <Typography
-            sx={{
-              paddingInline: "5px",
-              fontFamily: " Josefin Sans",
-              color: "#474545",
-              fontSize: "20px",
-              marginTop: "10px",
-              textAlign: "justify",
-            }}
+                style={customTextStyle}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
+                 Alina ipsum <br/>dolor sit amet, consectetur adipiscing elit. Etiam
             scelerisque felis sapien, et euismod dolor tincidunt vitae. Praesent
             porttitor, nunc nec feugiat rutrum, ligula ante volutpat lorem,
             sagittis pellentesque risus nibh vestibulum augue. Aenean id porta
@@ -365,6 +341,8 @@ const Hero = () => {
               xs: "wrap",
               sm: "noWrap",
             },
+            border: "10px solid #a5dba5",
+            padding:'20px',
           }}
         >
           <CardMedia
@@ -379,14 +357,7 @@ const Hero = () => {
             alt="Paella dish"
           />
           <Typography
-            sx={{
-              paddingInline: "5px",
-              fontFamily: " Josefin Sans",
-              color: "#474545",
-              fontSize: "20px",
-              marginTop: "10px",
-              textAlign: "justify",
-            }}
+             style={customTextStyle}
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
             scelerisque felis sapien, et euismod dolor tincidunt vitae. Praesent
@@ -412,6 +383,8 @@ const Hero = () => {
               xs: "wrap",
               sm: "noWrap",
             },
+            border: "10px solid #e0d6a8",
+            padding:'20px',
           }}
         >
           <CardMedia
@@ -426,14 +399,7 @@ const Hero = () => {
             alt="Paella dish"
           />
           <Typography
-            sx={{
-              paddingInline: "5px",
-              fontFamily: " Josefin Sans",
-              color: "#474545",
-              fontSize: "20px",
-              marginTop: "10px",
-              textAlign: "justify",
-            }}
+           style={customTextStyle}
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
             scelerisque felis sapien, et euismod dolor tincidunt vitae. Praesent
@@ -459,6 +425,8 @@ const Hero = () => {
               xs: "wrap",
               sm: "noWrap",
             },
+            border: "10px solid #a9c9df",
+            padding:'20px',
           }}
         >
           <CardMedia
@@ -473,14 +441,7 @@ const Hero = () => {
             alt="Paella dish"
           />
           <Typography
-            sx={{
-              paddingInline: "5px",
-              fontFamily: " Josefin Sans",
-              color: "#474545",
-              fontSize: "20px",
-              marginTop: "10px",
-              textAlign: "justify",
-            }}
+            style={customTextStyle}
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
             scelerisque felis sapien, et euismod dolor tincidunt vitae. Praesent
@@ -498,6 +459,7 @@ const Hero = () => {
           image={pepper}
           alt="Paella dish"
           sx={{
+
             height: {
               xs: "150px",
               sm: "200px",
