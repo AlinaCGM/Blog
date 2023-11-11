@@ -41,16 +41,16 @@ const FoodItemContainer = styled("div")(({ theme }) => ({
   gap: "20px",
 }));
 
-const FoodItemHeading = styled("h3")({
-  fontSize: "calc(100% + 0.3vw)",
-  border: "1px solid gray",
-  padding: "10px 10px",
-  height: "100px",
-  width: "100%",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-});
+// const FoodItemHeading = styled("h3")({
+//   fontSize: "calc(100% + 0.3vw)",
+//   border: "1px solid gray",
+//   padding: "10px 10px",
+//   height: "100px",
+//   width: "100%",
+//   display: "flex",
+//   justifyContent: "center",
+//   alignItems: "center",
+// });
 
 const FoodItemImageFrame = styled("div")(({ theme }) => ({
   width: "100%",
