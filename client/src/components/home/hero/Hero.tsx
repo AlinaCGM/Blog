@@ -13,7 +13,7 @@ import im8 from "../../../assets/bocal.jpg";
 import pepper from "../../../assets/pepper1.jpg";
 
 const customTextStyle:  React.CSSProperties = {
-  height: "25%",
+  height: "auto",
   fontSize: "20px",
   textAlign: "justify",
   color: "#1b1919",
@@ -279,11 +279,13 @@ const Hero = () => {
           gap: 5,
           marginBottom: "50px",
           marginInline: "auto",
+          
         }}
       >
         {/* first card */}
         <Box
           sx={{
+           
             display: "flex",
             justifyContent: "space-around",
             marginInline: "auto",
@@ -298,12 +300,12 @@ const Hero = () => {
             },
             border: "10px solid #d89b9b",
             padding:'20px',
-           
-            
+            borderRadius:'5px', 
           }}
         >
           <CardMedia
             sx={{
+            
               width: {
                 sm: "40%",
                 md: "50%",
@@ -317,13 +319,13 @@ const Hero = () => {
           <Typography
                 style={customTextStyle}
           >
-                 Alina ipsum <br/>dolor sit amet, consectetur adipiscing elit. Etiam
+                 Alina ipsum dolor sit amet, consectetur adipiscing elit. Etiam
             scelerisque felis sapien, et euismod dolor tincidunt vitae. Praesent
             porttitor, nunc nec feugiat rutrum, ligula ante volutpat lorem,
             sagittis pellentesque risus nibh vestibulum augue. Aenean id porta
             felis, a faucibus mauris. Etiam ultricies, orci eget interdum
             elementum, metus ante gravida enim, ac dignissim mauris nisl non
-            nunc. Aliquam ac suscipit erat. Ut ut risus ante.
+            nunc. 
           </Typography>
         </Box>
         {/* second card */}
@@ -343,6 +345,7 @@ const Hero = () => {
             },
             border: "10px solid #a5dba5",
             padding:'20px',
+            borderRadius:'5px', 
           }}
         >
           <CardMedia
@@ -385,6 +388,7 @@ const Hero = () => {
             },
             border: "10px solid #e0d6a8",
             padding:'20px',
+            borderRadius:'5px', 
           }}
         >
           <CardMedia
@@ -427,6 +431,7 @@ const Hero = () => {
             },
             border: "10px solid #a9c9df",
             padding:'20px',
+            borderRadius:'5px', 
           }}
         >
           <CardMedia
